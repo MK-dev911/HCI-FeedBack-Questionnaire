@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Target HCI Dataset Collector</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Top Action Row (Always Available) -->
+    <div class="top-bar">
+      <button type="button" id="theme-toggle-btn" class="action-btn circle-btn" aria-label="Toggle Theme">
+        <span id="theme-icon">🌙</span>
+      </button>
+      <button type="button" id="lang-toggle-btn" class="action-btn lang-btn">
+        <span class="lang-icon">🌐</span>
+        <span id="lang-btn-text">Fa / English</span>
+      </button>
+    </div>
+
+    <!-- STAGE 1: Welcome & Profile Setup Screen -->
+    <div id="screen-registration" class="survey-card registration-zone">
+      <div class="target-badge-label" data-i18n="demographics_label">HCI Study Registration</div>
+      <h1 data-i18n="welcome_title" class="main-gradient-title">Welcome Participant</h1>
+      <p id="demographics-desc" data-i18n="demographics_desc">Please provide your basic details below to initialize your secure evaluation session.</p>
+      
+      <div class="vertical-input-stack">
+        <div class="input-field-wrapper">
+          <input type="text" id="user-name" class="opinion-input" placeholder="First Name or Pseudonym" required>
+        </div>
+        <div class="input-field-wrapper">
+          <input type="number" id="user-age" class="opinion-input" placeholder="Age" min="1" max="120" required>
+        </div>
+        <div class="input-field-wrapper">
+          <input type="text" id="user-job" class="opinion-input" placeholder="Job / Field of Study (Optional)">
+        </div>
+      </div>
+
+      <button type="button" id="start-session-btn" class="submit-btn" style="margin-top: 2rem;" data-i18n="start_btn">
+        Begin System Evaluation →
+      </button>
+    </div>
+
+    <!-- STAGE 2: Core Questionnaire Evaluation Interface (Hidden Initially) -->
+    <div id="screen-evaluation" style="display: none;">
+      <!-- Progress Indicator -->
+      <div class="progress-container">
+        <div class="progress-bar" id="survey-progress"></div>
+      </div>
+
+      <!-- Target Evaluation Website Deck -->
+      <div class="target-website-card" id="target-deck">
+        <div class="target-badge-label" data-i18n="evaluating_target">Currently Evaluating Platform:</div>
+        <h2 id="target-site-title">---</h2>
+        <a id="target-site-link" href="#" target="_blank" class="visit-link-btn">
+          <span data-i18n="visit_site_btn">Explore Website</span> ↗
+        </a>
+      </div>
+
+      <div class="header">
+        <h1 data-i18n="header_title">System Experience Evaluation</h1>
+        <p data-i18n="header_desc">Please interact with every sliding bar to calibrate your precise score and share any opinions.</p>
+        <div class="legend-container">
+          <span data-i18n="legend_min">1.0 = Strongly Disagree</span>
+          <span data-i18n="legend_max">5.0 = Strongly Agree</span>
+        </div>
+      </div>
+
+      <form id="questionnaire-form">
+        <div id="survey-content">
+          <!-- JavaScript dynamically injects localized question cards here -->
+        </div>
+
+        <button type="submit" class="submit-btn" id="master-submit-btn" data-i18n="submit_btn">
+          Submit & Proceed
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
