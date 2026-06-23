@@ -75,4 +75,5 @@ Upon completing the evaluation matrix, the engine packages all localized interac
  Or
  
 3. Clone this repository directly onto your local environment:
-git clone [https://github.com/MK-dev911/HCI-FeedBack-Questionnaire.git](https://github.com/MK-dev911/HCI-FeedBack-Questionnaire.git)
+ ```bash
+   git clone [https://github.com/MK-dev911/HCI-FeedBack-Questionnaire.git]
