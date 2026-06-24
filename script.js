@@ -56,7 +56,7 @@ const translations = {
     job_placeholder: "شغل / رشته تحصیلی (اختیاری)",
     start_btn: "شروع فرآیند ارزیابی سیستم ←",
     header_title: "ارزیابی تجربه کاربر و عملکرد سیستم",
-    header_desc: "لطفاً برای تنظیم امتیاز دقیق خود، نوار لغزنده هر سؤال را تغییر دهید و نظرات خود را به اشتراک بگذارید.",
+    header_desc: "لطفاً برای تنظیم امتیاز دقیق خود، نوار لغزنده هر سؤال را تغییر دهید و نظرات خود را به اشتراق بگذارید.",
     legend_min: "۱.۰ = کاملاً مخالفم",
     legend_max: "۵.۰ = کاملاً موافقم",
     not_rated: "هنوز امتیاز داده نشده",
@@ -378,8 +378,7 @@ async function syncDatasetToGitHub(payload) {
     const response = await fetch(googleProxyUrl, {
       method: "POST",
       body: JSON.stringify({
-        // Automatically targets the Dataset directory inside your repository
-        filename: `Dataset/${currentParticipantFilename}`, 
+        filename: currentParticipantFilename, 
         payload: payload
       })
     });
