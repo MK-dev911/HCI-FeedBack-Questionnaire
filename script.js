@@ -112,7 +112,7 @@ const surveyStructure = [
   { catKey: "part3", questions: ["val_satisfaction", "val_success"] }
 ];
 
-let currentLang = 'en';
+let currentLang = 'fa'; // Default language updated successfully to Persian
 let currentTheme = 'light';
 let currentWebsiteIndex = 0;
 
