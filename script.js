@@ -505,10 +505,23 @@ document.getElementById('questionnaire-form').addEventListener('submit', functio
     compiledDataset.session_metadata.total_duration_seconds = parseFloat(((Date.now() - campaignGlobalStartTime) / 1000).toFixed(2));
     
     // Final defensive push ensuring total duration metadata updates to repo
-    syncDatasetToGitHub(compiledDataset).then(() => {
-      alert(translations[currentLang].completion_alert);
-      triggerJSONDownload(compiledDataset); // Keeps local download as fallback/receipt
+   async function syncDatasetToGitHub(payload) {
+  // PASTE YOUR GOOGLE WEB APP URL HERE
+  const googleProxyUrl = "https://script.google.com/macros/s/XXXXXX/exec"; 
+
+  try {
+    await fetch(googleProxyUrl, {
+      method: "POST",
+      body: JSON.stringify({
+        filename: currentParticipantFilename,
+        payload: payload
+      })
     });
+    console.log("State successfully compiled and streamed through Google endpoint proxy.");
+  } catch (error) {
+    console.error("Network interface pipeline dropped:", error);
+  }
+}
   }
 });
 
