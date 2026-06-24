@@ -84,7 +84,6 @@ Upon completing the evaluation matrix, the engine packages all localized interac
 ---
 
 ## 📈 Future Milestones
-[ ] Integrate secure, automated asynchronous fetch() streaming hooks directly to centralized database layers (Supabase / Firebase / Cloud Macros).
 
 [ ] Implement an automated feature-engineering script to preprocess the raw interaction counts and focus metrics into standardized ML tensor shapes.
 
