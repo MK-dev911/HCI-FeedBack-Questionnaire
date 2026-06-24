@@ -112,7 +112,7 @@ const surveyStructure = [
   { catKey: "part3", questions: ["val_satisfaction", "val_success"] }
 ];
 
-let currentLang = 'fa'; // Default language updated successfully to Persian
+let currentLang = 'fa'; 
 let currentTheme = 'light';
 let currentWebsiteIndex = 0;
 
@@ -369,28 +369,27 @@ function triggerJSONDownload(payload) {
   downloadAnchor.remove();
 }
 
-// Securely pipes frontend data states to Vercel Node API proxy without sharing repository authentication keys
+// 🔐 Secure Global Pipeline: Streams dataset states safely into Google Apps Script Proxy
 async function syncDatasetToGitHub(payload) {
+  // ⚠️ PASTE YOUR ACTUAL GOOGLE WEB APP EXECUTION URL HERE
+  const googleProxyUrl = "https://script.google.com/macros/s/XXXXXX/exec"; 
+
   try {
-    const response = await fetch("/api/sync", {
+    const response = await fetch(googleProxyUrl, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
       body: JSON.stringify({
         filename: currentParticipantFilename,
         payload: payload
       })
     });
-
+    
     if (response.ok) {
-      console.log(`Successfully synced state to secure serverless repository proxy.`);
+      console.log("State successfully compiled and streamed through Google endpoint proxy.");
     } else {
-      const serverError = await response.json();
-      console.error("Secure proxy rejected transmission update:", serverError);
+      console.error("Proxy rejected data stream transmission request.");
     }
   } catch (error) {
-    console.error("Network interface error trying to communicate with backend proxy:", error);
+    console.error("Network interface pipeline dropped:", error);
   }
 }
 
@@ -415,28 +414,23 @@ document.getElementById('start-session-btn').addEventListener('click', () => {
   const jobVal = document.getElementById('user-job').value.trim();
   const regCard = document.getElementById('screen-registration');
 
-  // Verify fields
   if (!nameVal || !ageVal) {
     regCard.classList.add('required-error');
     alert(translations[currentLang].validation_demographics_alert);
     return;
   }
 
-  // Commit to operational data models
   compiledDataset.session_metadata.participant.name = nameVal;
   compiledDataset.session_metadata.participant.age = parseInt(ageVal, 10);
   compiledDataset.session_metadata.participant.job_or_field = jobVal !== "" ? jobVal : null;
 
-  // Generate an isolated tracking filename to avoid cross-user overrides inside the repository directory
   const sanitizedName = nameVal.toLowerCase().replace(/[^a-z0-9]/g, '_');
   const timestamp = Math.floor(Date.now() / 1000);
   currentParticipantFilename = `${sanitizedName}_${timestamp}.json`;
 
-  // Timestamps initialize precisely when they pass this portal
   campaignGlobalStartTime = Date.now();
   targetStageStartTime = Date.now();
 
-  // Screen Swap Transition Execution
   regCard.style.display = 'none';
   document.getElementById('screen-evaluation').style.display = 'block';
   
@@ -461,14 +455,12 @@ document.getElementById('questionnaire-form').addEventListener('submit', functio
     }
   });
 
-  // Halt the submission if they missed any sliders
   if (!validationPassed) {
     firstUnansweredBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
     alert(translations[currentLang].validation_alert);
     return; 
   }
 
-  // Package the exact metrics for the CURRENT website
   const currentWebsite = websitesPool[currentWebsiteIndex];
   const formData = new FormData(this);
   
@@ -489,39 +481,24 @@ document.getElementById('questionnaire-form').addEventListener('submit', functio
     };
   }
 
-  // Save it to our master RAM object
   compiledDataset.website_evaluations[currentWebsite.id] = currentWebsitePayload;
 
-  // Stream progressive state modification to remote proxy storage endpoint
-  syncDatasetToGitHub(compiledDataset);
-
-  // Progress the loop or finalize the study
+  // Handle routing progress or study completion loops cleanly
   if (currentWebsiteIndex < websitesPool.length - 1) {
-    // Move to the next website
+    // Stream current intermediate state modification to remote proxy storage endpoint
+    syncDatasetToGitHub(compiledDataset);
     currentWebsiteIndex++;
     cleanResetFormState();
   } else {
-    // End of the entire campaign
+    // End of the entire campaign setup
     compiledDataset.session_metadata.total_duration_seconds = parseFloat(((Date.now() - campaignGlobalStartTime) / 1000).toFixed(2));
     
-    // Final defensive push ensuring total duration metadata updates to repo
-   async function syncDatasetToGitHub(payload) {
-  // PASTE YOUR GOOGLE WEB APP URL HERE
-  const googleProxyUrl = "https://script.google.com/macros/s/XXXXXX/exec"; 
-
-  try {
-    await fetch(googleProxyUrl, {
-      method: "POST",
-      body: JSON.stringify({
-        filename: currentParticipantFilename,
-        payload: payload
-      })
-    });
-    console.log("State successfully compiled and streamed through Google endpoint proxy.");
-  } catch (error) {
-    console.error("Network interface pipeline dropped:", error);
-  }
-}
+    // Final definitive push ensuring total duration metadata updates directly to repo
+    syncDatasetToGitHub(compiledDataset);
+    
+    // Trigger local backup download and notify participant
+    triggerJSONDownload(compiledDataset);
+    alert(translations[currentLang].completion_alert);
   }
 });
 
