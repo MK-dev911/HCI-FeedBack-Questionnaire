@@ -372,7 +372,7 @@ function triggerJSONDownload(payload) {
 // 🔐 Secure Global Pipeline: Streams dataset states safely into your Google Apps Script Proxy
 async function syncDatasetToGitHub(payload) {
   // ⚠️ PASTE YOUR ACTUAL GOOGLE WEB APP EXECUTION URL HERE
-  const googleProxyUrl = "https://script.google.com/macros/s/AKfycbzb-ls-A7HcJhV0djUkgMxSfy3ZclZDJfIjVoUB32-NBcjsKWHNJsPIGwKZ8o7GFIpa/exec"; 
+  const googleProxyUrl = "https://script.google.com/macros/s/AKfycbwsuLJrmqhlHhM8gXTY4vE5ga1tawiWAijKVN22WJOA-mfKI4p4MlnbmnN-iYUu95bx/exec"; 
 
   try {
     const response = await fetch(googleProxyUrl, {
