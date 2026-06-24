@@ -134,6 +134,7 @@ let trackingMetrics = {};
 let targetStageStartTime = null;
 let campaignGlobalStartTime = null;
 let totalQuestionsCount = 0;
+let currentParticipantFilename = null;
 
 const surveyContainer = document.getElementById('survey-content');
 
@@ -264,7 +265,6 @@ function refreshAllSliderFills() {
   });
 }
 
-// Map real-time continuous scores to evaluation phrases
 function evaluateContextString(val) {
   const dict = translations[currentLang].likert;
   if (val <= 1.8) return dict.str_disagree;
@@ -363,10 +363,35 @@ function triggerJSONDownload(payload) {
   const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(payload, null, 2));
   const downloadAnchor = document.createElement('a');
   downloadAnchor.setAttribute("href", dataStr);
-  downloadAnchor.setAttribute("download", "hci_websites_dataset.json");
+  downloadAnchor.setAttribute("download", currentParticipantFilename || "hci_dataset.json");
   document.body.appendChild(downloadAnchor);
   downloadAnchor.click();
   downloadAnchor.remove();
+}
+
+// Securely pipes frontend data states to Vercel Node API proxy without sharing repository authentication keys
+async function syncDatasetToGitHub(payload) {
+  try {
+    const response = await fetch("/api/sync", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        filename: currentParticipantFilename,
+        payload: payload
+      })
+    });
+
+    if (response.ok) {
+      console.log(`Successfully synced state to secure serverless repository proxy.`);
+    } else {
+      const serverError = await response.json();
+      console.error("Secure proxy rejected transmission update:", serverError);
+    }
+  } catch (error) {
+    console.error("Network interface error trying to communicate with backend proxy:", error);
+  }
 }
 
 // Theme Event Wire
@@ -402,6 +427,11 @@ document.getElementById('start-session-btn').addEventListener('click', () => {
   compiledDataset.session_metadata.participant.age = parseInt(ageVal, 10);
   compiledDataset.session_metadata.participant.job_or_field = jobVal !== "" ? jobVal : null;
 
+  // Generate an isolated tracking filename to avoid cross-user overrides inside the repository directory
+  const sanitizedName = nameVal.toLowerCase().replace(/[^a-z0-9]/g, '_');
+  const timestamp = Math.floor(Date.now() / 1000);
+  currentParticipantFilename = `${sanitizedName}_${timestamp}.json`;
+
   // Timestamps initialize precisely when they pass this portal
   campaignGlobalStartTime = Date.now();
   targetStageStartTime = Date.now();
@@ -431,58 +461,57 @@ document.getElementById('questionnaire-form').addEventListener('submit', functio
     }
   });
 
+  // Halt the submission if they missed any sliders
   if (!validationPassed) {
+    firstUnansweredBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
     alert(translations[currentLang].validation_alert);
-    if (firstUnansweredBlock) firstUnansweredBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    return;
+    return; 
   }
 
+  // Package the exact metrics for the CURRENT website
   const currentWebsite = websitesPool[currentWebsiteIndex];
   const formData = new FormData(this);
   
   const currentWebsitePayload = {
-    website_metadata: {
-      website_id: currentWebsite.id,
-      url: currentWebsite.url,
-      time_spent_on_website_seconds: parseFloat(((Date.now() - targetStageStartTime) / 1000).toFixed(2)),
-      collection_language: currentLang,
-      collection_theme: currentTheme
-    },
-    quantitative_metrics: {},
-    qualitative_opinions: {}
+    website_id: currentWebsite.id,
+    url: currentWebsite.url,
+    time_spent_seconds: parseFloat(((Date.now() - targetStageStartTime) / 1000).toFixed(2)),
+    metrics: {}
   };
 
   for (let [key, value] of formData.entries()) {
-    const finalVal = parseFloat(value);
-    const tracking = trackingMetrics[key];
     const userOpinionText = document.getElementById(`opinion_${key}`).value.trim();
-    
-    let calculatedDurationSec = parseFloat((tracking.cumulativeFocusDurationMs / 1000).toFixed(2));
-    if (calculatedDurationSec === 0) calculatedDurationSec = 0.5;
-
-    currentWebsitePayload.quantitative_metrics[key] = {
-      score_rating: finalVal,
-      interaction_count: tracking.interactionCount,
-      active_focus_seconds: calculatedDurationSec
+    currentWebsitePayload.metrics[key] = {
+      score: parseFloat(value),
+      opinions: userOpinionText !== "" ? userOpinionText : null,
+      interaction_count: trackingMetrics[key].interactionCount,
+      focus_time_ms: trackingMetrics[key].cumulativeFocusDurationMs
     };
-
-    currentWebsitePayload.qualitative_opinions[`${key}_text`] = userOpinionText !== "" ? userOpinionText : null;
   }
 
+  // Save it to our master RAM object
   compiledDataset.website_evaluations[currentWebsite.id] = currentWebsitePayload;
 
+  // Stream progressive state modification to remote proxy storage endpoint
+  syncDatasetToGitHub(compiledDataset);
+
+  // Progress the loop or finalize the study
   if (currentWebsiteIndex < websitesPool.length - 1) {
+    // Move to the next website
     currentWebsiteIndex++;
     cleanResetFormState();
   } else {
-    // Campaign termination operations
+    // End of the entire campaign
     compiledDataset.session_metadata.total_duration_seconds = parseFloat(((Date.now() - campaignGlobalStartTime) / 1000).toFixed(2));
     
-    alert(translations[currentLang].completion_alert);
-    triggerJSONDownload(compiledDataset);
+    // Final defensive push ensuring total duration metadata updates to repo
+    syncDatasetToGitHub(compiledDataset).then(() => {
+      alert(translations[currentLang].completion_alert);
+      triggerJSONDownload(compiledDataset); // Keeps local download as fallback/receipt
+    });
   }
 });
 
-// Bootstrap Setup Execution
+// Initial Setup Activation on Load
 initializeFormStructure();
 applyLanguagePack();
