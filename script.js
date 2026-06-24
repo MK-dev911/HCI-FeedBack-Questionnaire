@@ -369,7 +369,7 @@ function triggerJSONDownload(payload) {
   downloadAnchor.remove();
 }
 
-// 🔐 Secure Global Pipeline: Streams dataset states safely into Google Apps Script Proxy
+// 🔐 Secure Global Pipeline: Streams dataset states safely into your Google Apps Script Proxy
 async function syncDatasetToGitHub(payload) {
   // ⚠️ PASTE YOUR ACTUAL GOOGLE WEB APP EXECUTION URL HERE
   const googleProxyUrl = "https://script.google.com/macros/s/XXXXXX/exec"; 
@@ -378,7 +378,8 @@ async function syncDatasetToGitHub(payload) {
     const response = await fetch(googleProxyUrl, {
       method: "POST",
       body: JSON.stringify({
-        filename: currentParticipantFilename,
+        // Automatically targets the Dataset directory inside your repository
+        filename: `Dataset/${currentParticipantFilename}`, 
         payload: payload
       })
     });
