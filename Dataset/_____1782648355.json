@@ -1,0 +1,93 @@
+{
+  "session_metadata": {
+    "total_duration_seconds": 0,
+    "generated_timestamp": "2026-06-28T12:02:44.674Z",
+    "evaluation_campaign_size": 6,
+    "participant": {
+      "name": "مریم",
+      "age": 49,
+      "job_or_field": "نرم افزار"
+    }
+  },
+  "website_evaluations": {
+    "digikala": {
+      "website_id": "digikala",
+      "url": "https://www.digikala.com",
+      "time_spent_seconds": 204.08,
+      "metrics": {
+        "hci_flexibility": {
+          "score": 1.6,
+          "opinions": null,
+          "interaction_count": 9,
+          "focus_time_ms": 282
+        },
+        "hci_applicability": {
+          "score": 4.9,
+          "opinions": null,
+          "interaction_count": 11,
+          "focus_time_ms": 250
+        },
+        "hci_accessibility": {
+          "score": 1.45,
+          "opinions": null,
+          "interaction_count": 10,
+          "focus_time_ms": 223
+        },
+        "hci_reliability": {
+          "score": 4.2,
+          "opinions": null,
+          "interaction_count": 9,
+          "focus_time_ms": 185
+        },
+        "hci_responsiveness": {
+          "score": 2,
+          "opinions": null,
+          "interaction_count": 11,
+          "focus_time_ms": 267
+        },
+        "hci_consistency": {
+          "score": 1.85,
+          "opinions": null,
+          "interaction_count": 9,
+          "focus_time_ms": 222
+        },
+        "perf_cls": {
+          "score": 1.35,
+          "opinions": null,
+          "interaction_count": 12,
+          "focus_time_ms": 238
+        },
+        "perf_inp": {
+          "score": 2.15,
+          "opinions": null,
+          "interaction_count": 10,
+          "focus_time_ms": 202
+        },
+        "perf_tbt": {
+          "score": 4.4,
+          "opinions": null,
+          "interaction_count": 11,
+          "focus_time_ms": 269
+        },
+        "perf_fcp": {
+          "score": 4.9,
+          "opinions": null,
+          "interaction_count": 14,
+          "focus_time_ms": 353
+        },
+        "val_satisfaction": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 12,
+          "focus_time_ms": 240
+        },
+        "val_success": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 9,
+          "focus_time_ms": 211
+        }
+      }
+    }
+  }
+}
