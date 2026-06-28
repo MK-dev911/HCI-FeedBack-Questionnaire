@@ -1,29 +1,60 @@
+const styleFixes = document.createElement('style');
+styleFixes.textContent = `
+  /* تبدیل متن خوش‌آمدگویی به یک کارت راهنمای شیک، لطیف و هماهنگ با تم */
+  [data-i18n="demographics_desc"] { 
+    white-space: pre-line; 
+    line-height: 1.8; 
+    margin: 20px 0 30px 0;
+    text-align: justify;
+    font-size: 0.95rem;
+    padding: 24px;
+    background: linear-gradient(135deg, rgba(255, 131, 162, 0.04) 0%, rgba(158, 123, 255, 0.04) 100%);
+    border: 1px solid rgba(158, 123, 255, 0.15);
+    border-radius: 16px;
+    color: #4A5568;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.01);
+  }
+
+  /* سازگاری کارت با حالت دارک‌مود */
+  .dark-theme [data-i18n="demographics_desc"] {
+    background: linear-gradient(135deg, rgba(255, 131, 162, 0.06) 0%, rgba(158, 123, 255, 0.06) 100%);
+    border-color: rgba(158, 123, 255, 0.3);
+    color: #E2E8F0;
+  }
+`;
+document.head.appendChild(styleFixes);
+
 const translations = {
   en: {
     welcome_title: "Welcome Participant",
     demographics_label: "HCI Study Registration",
-    demographics_desc: "Please provide your basic details below to initialize your secure evaluation session.",
+    demographics_desc: `Welcome!
+Thank you sincerely for dedicating your time to participate in this research. 🌱
+In this study, we aim to evaluate user experiences while interacting with a website to help design and improve more user-friendly and high-quality platforms.
+You do not need any specialized knowledge or familiarity with web design or Human-Computer Interaction (HCI) to participate in this questionnaire. Simply explore the website as you normally would and answer the questions based on your personal experience and opinion.
+All your responses are confidential and will be used solely for research purposes.
+Thank you for your valuable support and cooperation, and we hope completing this questionnaire won't take much of your time.`,
     name_placeholder: "Name or Pseudonym",
     age_placeholder: "Age",
     job_placeholder: "Job / Field of Study (Optional)",
     start_btn: "Begin System Evaluation →",
     header_title: "System Experience Evaluation",
-    header_desc: "Please interact with every sliding bar to calibrate your precise score and share any opinions.",
+    header_desc: "Please move the sliders to rate your experience. Feel free to skip any questions you want!",
     legend_min: "1.0 = Strongly Disagree",
     legend_max: "5.0 = Strongly Agree",
     not_rated: "Not Rated yet",
     opinion_holder: "Optional: Share your thoughts or context for this rating...",
     submit_btn_next: "Submit & Proceed to Next Website",
-    submit_btn_final: "Compile & Export Entire Dataset JSON",
+    submit_btn_final: "Submit Final Evaluation",
     validation_alert: "Validation Error: Please review and calibrate all continuous rating sliders before submitting.",
     validation_demographics_alert: "Please enter your Name and Age to initialize your study profile.",
     evaluating_target: "Currently Evaluating Platform:",
-    visit_site_btn: "Explore Website",
-    completion_alert: "Excellent! All evaluations are complete. Your compiled dataset JSON file is downloading now.",
+    visit_site_btn: "Open Website in Split Screen ↗",
+    completion_alert: "Excellent! Your evaluation is complete and successfully submitted. Thank you for your participation!",
     categories: {
-      part1: "Part 1: Core HCI Attributes",
-      part2: "Part 2: Perceived Performance",
-      part3: "Part 3: Overall Value"
+      part1: "Part 1: Ease of Use",
+      part2: "Part 2: Website Speed & Performance",
+      part3: "Part 3: Overall Satisfaction"
     },
     likert: {
       str_disagree: "Strongly Disagree",
@@ -33,45 +64,50 @@ const translations = {
       str_agree: "Strongly Agree"
     },
     questions: {
-      hci_flexibility: "The system allows me to complete my tasks in multiple ways to suit my preferences or workflow.",
-      hci_applicability: "The features provided are directly relevant and useful for what I need to accomplish.",
-      hci_accessibility: "I can easily read, navigate, and interact with the application regardless of my device or environment.",
-      hci_reliability: "The system functions smoothly without unexpected errors, bugs, or crashes.",
-      hci_responsiveness: "The interface provides clear and immediate visual feedback when I take an action.",
-      hci_consistency: "The layout, design, and terminology are uniform and predictable across all pages.",
-      perf_cls: "Text, buttons, or images on the screen remain stable and do not suddenly jump around.",
-      perf_inp: "When I interact with the site, it responds immediately without any noticeable lag.",
-      perf_tbt: "Once the page appears, I can start scrolling and clicking right away without the screen feeling 'frozen'.",
-      perf_fcp: "When I open a page, the main content (text and images) loads and appears very quickly.",
-      val_satisfaction: "Overall, I am highly satisfied with my experience using this system.",
-      val_success: "I was able to accomplish my goal today smoothly and without frustration."
+      hci_flexibility: "It is easy to use the site in different ways based on my needs.",
+      hci_applicability: "The site has all the features I actually need.",
+      hci_accessibility: "I can use and read the site easily on both my phone and computer.",
+      hci_reliability: "The site works smoothly without any errors, bugs, or freezing.",
+      hci_responsiveness: "The buttons and pages react instantly when I click them.",
+      hci_consistency: "The layout and look of the site are similar and neat on all pages.",
+      perf_cls: "The text and images stay in place and do not jump around while loading.",
+      perf_inp: "The site responds quickly when I type or click things.",
+      perf_tbt: "I can scroll and click immediately without waiting for the page to unfreeze.",
+      perf_fcp: "The website loads up very fast.",
+      val_satisfaction: "Overall, I am happy with my experience on this site.",
+      val_success: "I easily finished what I wanted to do on the site today."
     }
   },
   fa: {
     welcome_title: "خوش آمدید",
-    demographics_label: "ثبت‌نام فرآیند ارزیابی HCI",
-    demographics_desc: "لطفاً مشخصات پایه خود را جهت اعتبارسنجی فرآیند تحقیق و شروع نشست ارزیابی وارد نمایید.",
+    demographics_label: "ثبت‌نام فرآیند ارزیابی سیستم",
+    demographics_desc: `خوش آمدید!
+از اینکه وقت خود را برای شرکت در این پژوهش اختصاص داده‌اید، صمیمانه سپاسگزاریم. 🌱
+در این پژوهش قصد داریم تجربه کاربران هنگام استفاده از یک وب‌سایت را بررسی کنیم تا بتوانیم به طراحی و بهبود وب‌سایت‌های کاربرپسندتر و باکیفیت‌تر کمک کنیم.
+برای شرکت در این پرسشنامه نیازی به دانش تخصصی یا آشنایی با طراحی وب و تعامل انسان و کامپیوتر (HCI) ندارید. تنها کافی است وب‌سایت را مانند همیشه بررسی کنید و بر اساس تجربه و نظر شخصی خود به پرسش‌ها پاسخ دهید.
+تمام پاسخ‌های شما محرمانه است و فقط برای اهداف پژوهشی استفاده خواهد شد.
+از همراهی و همکاری ارزشمند شما سپاسگزاریم و امیدواریم تکمیل این پرسشنامه زمان زیادی از شما نگیرد.`,
     name_placeholder: "نام یا نام مستعار",
     age_placeholder: "سن",
     job_placeholder: "شغل / رشته تحصیلی (اختیاری)",
     start_btn: "شروع فرآیند ارزیابی سیستم ←",
-    header_title: "ارزیابی تجربه کاربر و عملکرد سیستم",
-    header_desc: "لطفاً برای تنظیم امتیاز دقیق خود، نوار لغزنده هر سؤال را تغییر دهید و نظرات خود را به اشتراق بگذارید.",
+    header_title: "ارزیابی تجربه کاربری وب‌سایت",
+    header_desc: "لطفاً با حرکت دادن نوارها به تجربه‌تان امتیاز دهید. هر سوالی را که مایل نبودید می‌توانید بدون پاسخ رها کنید (اختیاری).",
     legend_min: "۱.۰ = کاملاً مخالفم",
     legend_max: "۵.۰ = کاملاً موافقم",
-    not_rated: "هنوز امتیاز داده نشده",
+    not_rated: "هنوز امتیازی داده نشده",
     opinion_holder: "اختیاری: دیدگاه یا دلیل خود را برای این امتیاز بنویسید...",
     submit_btn_next: "ثبت و ورود به وب‌سایت بعدی",
-    submit_btn_final: "تدوین و دانلود نهایی فایل جی‌سون (JSON)",
+    submit_btn_final: "ثبت نهایی اطلاعات ارزیابی",
     validation_alert: "خطای اعتبار‌سنجی: لطفاً قبل از ارسال فرم، تمام نوارهای امتیازدهی را تنظیم کنید.",
     validation_demographics_alert: "لطفاً برای ایجاد پروفایل ارزیابی، نام و سن خود را وارد کنید.",
     evaluating_target: "وب‌سایت در حال ارزیابی:",
-    visit_site_btn: "مشاهده و بررسی وب‌سایت",
-    completion_alert: "بسیار عالی! ارزیابی تمام وب‌سایت‌ها به پایان رسید. فایل مجموعه داده اختصاصی شما هم‌اکنون دانلود می‌شود.",
+    visit_site_btn: "باز کردن هم‌زمان وب‌سایت در نیم‌صفحه کنار ↗",
+    completion_alert: "بسیار عالی! ارزیابی شما با موفقیت ثبت شد. از زمان و همکاری شما صمیمانه سپاسگزاریم!",
     categories: {
-      part1: "بخش ۱: ویژگی‌های اصلی تعامل انسان و کامپیوتر (HCI)",
-      part2: "بخش ۲: عملکرد درک‌شده سیستم",
-      part3: "بخش ۳: ارزش و رضایت کلی"
+      part1: "بخش ۱: راحتی در استفاده از سایت",
+      part2: "بخش ۲: سرعت و عملکرد سایت",
+      part3: "بخش ۳: رضایت کلی"
     },
     likert: {
       str_disagree: "کاملاً مخالفم",
@@ -81,23 +117,24 @@ const translations = {
       str_agree: "کاملاً موافقم"
     },
     questions: {
-      hci_flexibility: "سیستم به من اجازه می‌دهد تا وظایف خود را به روش‌های مختلف و متناسب با گردش کار خود انجام دهم.",
-      hci_applicability: "ویژگی‌های ارائه شده کاملاً مرتبط و برای کاری که باید انجام دهم مفید هستند.",
-      hci_accessibility: "من می‌توانم بدون توجه به نوع دستگاه یا محیط، به راحتی با برنامه ناوبری و تعامل داشته باشم.",
-      hci_reliability: "سیستم به آرامی و بدون خطاها، باگ‌ها یا خرابی‌های غیرمنتظره کار می‌کند.",
-      hci_responsiveness: "رابط کاربری هنگام انجام یک عمل، بازخورد بصری واضح و فوری ارائه می‌دهد.",
-      hci_consistency: "چیدمان، طراحی و اصطلاحات در تمام صفحات یکنواخت و قابل پیش‌بینی هستند.",
-      perf_cls: "متن‌ها، دکمه‌ها یا تصاویر روی صفحه پایدار می‌مانند و ناگهان جابجا نمی‌شوند.",
-      perf_inp: "وقتی با سایت تعامل برقرار می‌کنم، بلافاصله و بدون هیچ تاخیر قابل توجهی پاسخ می‌دهد.",
-      perf_tbt: "پس از ظاهر شدن صفحه، می‌توانم فوراً اسکرول و کلیک کنم بدون اینکه صفحه احساس «قفل شدن» داشته باشد.",
-      perf_fcp: "وقتی صفحه‌ای را باز می‌کنم، محتوای اصلی (متن و تصاویر) بسیار سریع بارگذاری و ظاهر می‌شود.",
-      val_satisfaction: "به طور کلی، من از تجربه استفاده از این سیستم بسیار راضی هستم.",
-      val_success: "من توانستم هدف خود را امروز به راحتی و بدون ناامیدی انجام دهم."
+      hci_flexibility: "استفاده از سایت به روش‌های مختلف و بر اساس نیاز من راحت است.",
+      hci_applicability: "سایت دقیقاً همان امکاناتی که به کارم می‌آید را دارد.",
+      hci_accessibility: "راحت می‌توانم سایت را در هر دستگاهی (گوشی یا کامپیوتر) بخوانم و استفاده کنم.",
+      hci_reliability: "سایت خیلی روان و بدون خطا، باگ یا هنگ کردن کار می‌کند.",
+      hci_responsiveness: "دکمه‌ها و صفحات سایت به محض کلیک کردن، سریع واکنش نشان می‌دهند.",
+      hci_consistency: "ظاهر سایت و کلمات استفاده شده در همه صفحات شبیه به هم و یکدست است.",
+      perf_cls: "متن‌ها و تصاویر سر جای خود هستند و موقع باز شدن صفحه ناگهان جابه‌جا نمی‌شوند.",
+      perf_inp: "سایت موقع کلیک کردن یا تایپ کردن خیلی سریع جواب می‌دهد.",
+      perf_tbt: "بدون معطل شدن یا قفل کردن صفحه، می‌توانم فوراً اسکرول کنم و کلیک کنم.",
+      perf_fcp: "سایت خیلی سریع و زود بالا می‌آید.",
+      val_satisfaction: "در کل، از کار کردن با این سایت راضی هستم.",
+      val_success: "امروز کارم را در این سایت راحت و بدون دردسر انجام دادم."
     }
   }
 };
 
-const websitesPool = [
+// Full database pool of available systems
+const masterWebsitesPool = [
   { id: "digikala", nameEn: "Digikala (E-Commerce)", nameFa: "دیجی‌کالا (فروشگاه آنلاین)", url: "https://www.digikala.com" },
   { id: "snapp", nameEn: "Snapp (Super App)", nameFa: "اسنپ (سوپر اپلیکیشن)", url: "https://www.snapp.ir" },
   { id: "aparat", nameEn: "Aparat (Video Platform)", nameFa: "آپارات (سرویس اشتراک ویدیو)", url: "https://www.aparat.com" },
@@ -105,6 +142,9 @@ const websitesPool = [
   { id: "filimo", nameEn: "Filimo (VOD Streaming)", nameFa: "فیلیمو (سامانه نمایش ویدیو)", url: "https://www.filimo.com" },
   { id: "torob", nameEn: "Torob (Shopping Search Engine)", nameFa: "ترب (موتور جستجوی خرید)", url: "https://torob.com" }
 ];
+
+// 🎲 Randomization Engine: Pick exactly ONE random target for this specific session execution
+const websitesPool = [masterWebsitesPool[Math.floor(Math.random() * masterWebsitesPool.length)]];
 
 const surveyStructure = [
   { catKey: "part1", questions: ["hci_flexibility", "hci_applicability", "hci_accessibility", "hci_reliability", "hci_responsiveness", "hci_consistency"] },
@@ -359,19 +399,7 @@ function cleanResetFormState() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function triggerJSONDownload(payload) {
-  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(payload, null, 2));
-  const downloadAnchor = document.createElement('a');
-  downloadAnchor.setAttribute("href", dataStr);
-  downloadAnchor.setAttribute("download", currentParticipantFilename || "hci_dataset.json");
-  document.body.appendChild(downloadAnchor);
-  downloadAnchor.click();
-  downloadAnchor.remove();
-}
-
-// 🔐 Secure Global Pipeline: Streams dataset states safely into your Google Apps Script Proxy
 async function syncDatasetToGitHub(payload) {
-  // ⚠️ PASTE YOUR ACTUAL GOOGLE WEB APP EXECUTION URL HERE
   const googleProxyUrl = "https://script.google.com/macros/s/AKfycbwsuLJrmqhlHhM8gXTY4vE5ga1tawiWAijKVN22WJOA-mfKI4p4MlnbmnN-iYUu95bx/exec"; 
 
   try {
@@ -437,29 +465,20 @@ document.getElementById('start-session-btn').addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+// ⚡️ موتور هوشمند Split Screen: باز کردن پنجره هدف در نیم‌صفحه چپ به صورت خودکار
+document.getElementById('target-site-link').addEventListener('click', function(e) {
+  e.preventDefault();
+  
+  const halfWidth = Math.floor(window.screen.availWidth / 2);
+  const fullHeight = window.screen.availHeight;
+
+  const features = `width=${halfWidth},height=${fullHeight},left=0,top=0,resizable=yes,scrollbars=yes,status=no,location=yes`;
+  window.open(this.href, 'hciTargetPlatformWindow', features);
+});
+
 // STEP 2: Multi-Website Loop Form Submission Handler
 document.getElementById('questionnaire-form').addEventListener('submit', function(e) {
   e.preventDefault();
-
-  let firstUnansweredBlock = null;
-  let validationPassed = true;
-
-  Object.keys(trackingMetrics).forEach(key => {
-    const blockEl = document.getElementById(`block_${key}`);
-    if (!trackingMetrics[key].hasInteracted) {
-      validationPassed = false;
-      blockEl.classList.add('required-error');
-      if (!firstUnansweredBlock) firstUnansweredBlock = blockEl;
-    } else {
-      blockEl.classList.remove('required-error');
-    }
-  });
-
-  if (!validationPassed) {
-    firstUnansweredBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    alert(translations[currentLang].validation_alert);
-    return; 
-  }
 
   const currentWebsite = websitesPool[currentWebsiteIndex];
   const formData = new FormData(this);
@@ -473,8 +492,10 @@ document.getElementById('questionnaire-form').addEventListener('submit', functio
 
   for (let [key, value] of formData.entries()) {
     const userOpinionText = document.getElementById(`opinion_${key}`).value.trim();
+    const hasInteracted = trackingMetrics[key].hasInteracted;
+    
     currentWebsitePayload.metrics[key] = {
-      score: parseFloat(value),
+      score: hasInteracted ? parseFloat(value) : null,
       opinions: userOpinionText !== "" ? userOpinionText : null,
       interaction_count: trackingMetrics[key].interactionCount,
       focus_time_ms: trackingMetrics[key].cumulativeFocusDurationMs
@@ -483,21 +504,13 @@ document.getElementById('questionnaire-form').addEventListener('submit', functio
 
   compiledDataset.website_evaluations[currentWebsite.id] = currentWebsitePayload;
 
-  // Handle routing progress or study completion loops cleanly
   if (currentWebsiteIndex < websitesPool.length - 1) {
-    // Stream current intermediate state modification to remote proxy storage endpoint
     syncDatasetToGitHub(compiledDataset);
     currentWebsiteIndex++;
     cleanResetFormState();
   } else {
-    // End of the entire campaign setup
     compiledDataset.session_metadata.total_duration_seconds = parseFloat(((Date.now() - campaignGlobalStartTime) / 1000).toFixed(2));
-    
-    // Final definitive push ensuring total duration metadata updates directly to repo
     syncDatasetToGitHub(compiledDataset);
-    
-    // Trigger local backup download and notify participant
-    triggerJSONDownload(compiledDataset);
     alert(translations[currentLang].completion_alert);
   }
 });
