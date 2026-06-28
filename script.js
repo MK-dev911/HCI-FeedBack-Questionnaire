@@ -4,7 +4,7 @@ styleFixes.textContent = `
   [data-i18n="demographics_desc"] { 
     white-space: pre-line; 
     line-height: 1.8; 
-    margin: 20px 0 30px 0;
+    margin: 20px 0 16px 0;
     text-align: justify;
     font-size: 0.95rem;
     padding: 24px;
@@ -15,11 +15,33 @@ styleFixes.textContent = `
     box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.01);
   }
 
-  /* سازگاری کارت با حالت دارک‌مود */
+  /* استایل بج زمان تقریبی تکمیل پرسشنامه */
+  #estimated-time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background-color: #FFF0F3;
+    border: 1px dashed #FF85A2;
+    border-radius: 20px;
+    color: #FF6B8B;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    width: max-content;
+  }
+
+  /* سازگاری کارت و بج با حالت دارک‌مود */
   .dark-theme [data-i18n="demographics_desc"] {
     background: linear-gradient(135deg, rgba(255, 131, 162, 0.06) 0%, rgba(158, 123, 255, 0.06) 100%);
     border-color: rgba(158, 123, 255, 0.3);
     color: #E2E8F0;
+  }
+  
+  .dark-theme #estimated-time-badge {
+    background-color: rgba(255, 133, 162, 0.12);
+    border-color: #FF85A2;
+    color: #FF85A2;
   }
 `;
 document.head.appendChild(styleFixes);
@@ -34,6 +56,7 @@ In this study, we aim to evaluate user experiences while interacting with a webs
 You do not need any specialized knowledge or familiarity with web design or Human-Computer Interaction (HCI) to participate in this questionnaire. Simply explore the website as you normally would and answer the questions based on your personal experience and opinion.
 All your responses are confidential and will be used solely for research purposes.
 Thank you for your valuable support and cooperation, and we hope completing this questionnaire won't take much of your time.`,
+    estimated_time: "⏱️ Estimated time to complete: 3 to 5 minutes",
     name_placeholder: "Name or Pseudonym",
     age_placeholder: "Age",
     job_placeholder: "Job / Field of Study (Optional)",
@@ -87,6 +110,7 @@ Thank you for your valuable support and cooperation, and we hope completing this
 برای شرکت در این پرسشنامه نیازی به دانش تخصصی یا آشنایی با طراحی وب و تعامل انسان و کامپیوتر (HCI) ندارید. تنها کافی است وب‌سایت را مانند همیشه بررسی کنید و بر اساس تجربه و نظر شخصی خود به پرسش‌ها پاسخ دهید.
 تمام پاسخ‌های شما محرمانه است و فقط برای اهداف پژوهشی استفاده خواهد شد.
 از همراهی و همکاری ارزشمند شما سپاسگزاریم و امیدواریم تکمیل این پرسشنامه زمان زیادی از شما نگیرد.`,
+    estimated_time: "⏱️ زمان تقریبی پاسخگویی: ۳ الی ۵ دقیقه",
     name_placeholder: "نام یا نام مستعار",
     age_placeholder: "سن",
     job_placeholder: "شغل / رشته تحصیلی (اختیاری)",
@@ -119,9 +143,9 @@ Thank you for your valuable support and cooperation, and we hope completing this
     questions: {
       hci_flexibility: "استفاده از سایت به روش‌های مختلف و بر اساس نیاز من راحت است.",
       hci_applicability: "سایت دقیقاً همان امکاناتی که به کارم می‌آید را دارد.",
-      hci_accessibility: "راحت می‌توانم سایت را در هر دستگاهی (گوشی یا کامپیوتر) بخوانم و استفاده کنم.",
-      hci_reliability: "سایت خیلی روان و بدون خطا، باگ یا هنگ کردن کار می‌کند.",
-      hci_responsiveness: "دکمه‌ها و صفحات سایت به محض کلیک کردن، سریع واکنش نشان می‌دهند.",
+      hci_accessibility: "راحت می‌توانم محتوای سایت را در هر دستگاهی (گوشی یا کامپیوتر) بخوانم و استفاده کنم.",
+      hci_reliability: "سایت خیلی روان و بدون خطا یا هنگ کردن کار می‌کند.",
+      hci_responsiveness: "دکمه‌ها و صفحات سایت به محض کلیک کردن، سریع عمل میکنند.",
       hci_consistency: "ظاهر سایت و کلمات استفاده شده در همه صفحات شبیه به هم و یکدست است.",
       perf_cls: "متن‌ها و تصاویر سر جای خود هستند و موقع باز شدن صفحه ناگهان جابه‌جا نمی‌شوند.",
       perf_inp: "سایت موقع کلیک کردن یا تایپ کردن خیلی سریع جواب می‌دهد.",
@@ -337,7 +361,20 @@ function applyLanguagePack() {
 
   document.querySelectorAll('[data-i18n]').forEach(element => {
     const key = element.getAttribute('data-i18n');
-    if (pack[key]) element.textContent = pack[key];
+    if (pack[key]) {
+      element.textContent = pack[key];
+      
+      // تزریق یا به‌روزرسانی داینامیک بج زمان تقریبی بلافاصله پس از تولید متن توضیحات خوش‌آمدگویی
+      if (key === 'demographics_desc') {
+        let badge = document.getElementById('estimated-time-badge');
+        if (!badge) {
+          badge = document.createElement('div');
+          badge.id = 'estimated-time-badge';
+          element.after(badge);
+        }
+        badge.innerHTML = pack.estimated_time;
+      }
+    }
   });
 
   document.querySelectorAll('[data-cat-key]').forEach(element => {
