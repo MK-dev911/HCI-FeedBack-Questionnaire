@@ -1,0 +1,93 @@
+{
+  "session_metadata": {
+    "total_duration_seconds": 326.03,
+    "generated_timestamp": "2026-06-29T06:33:36.756Z",
+    "evaluation_campaign_size": 1,
+    "participant": {
+      "name": "علی",
+      "age": 23,
+      "job_or_field": "دانشجو"
+    }
+  },
+  "website_evaluations": {
+    "filimo": {
+      "website_id": "filimo",
+      "url": "https://www.filimo.com",
+      "time_spent_seconds": 326.03,
+      "metrics": {
+        "hci_flexibility": {
+          "score": 2.15,
+          "opinions": null,
+          "interaction_count": 14,
+          "focus_time_ms": 5053
+        },
+        "hci_applicability": {
+          "score": 4.15,
+          "opinions": null,
+          "interaction_count": 6,
+          "focus_time_ms": 369
+        },
+        "hci_accessibility": {
+          "score": 2.45,
+          "opinions": "در تلوزیون هوشمند استفاده کردن از سایت بسیار سخت هست. مثلا پیدا کردن قسمت های مختلف یک سریال عذاب آور بود. تجربه خیلی بدی در تلوزیون هوشمند داشتم",
+          "interaction_count": 5,
+          "focus_time_ms": 403
+        },
+        "hci_reliability": {
+          "score": 2.4,
+          "opinions": "بعضی وقت ها حتی در دسکت تاپ استفاده کردن آسان نیست",
+          "interaction_count": 8,
+          "focus_time_ms": 1502
+        },
+        "hci_responsiveness": {
+          "score": 2.45,
+          "opinions": null,
+          "interaction_count": 6,
+          "focus_time_ms": 1199
+        },
+        "hci_consistency": {
+          "score": 3.6,
+          "opinions": null,
+          "interaction_count": 3,
+          "focus_time_ms": 1224
+        },
+        "perf_cls": {
+          "score": 2.3,
+          "opinions": "دقیقا این مورد رعایت نشده است و رفتار سایت غیر قابل پیش بینی است",
+          "interaction_count": 8,
+          "focus_time_ms": 1293
+        },
+        "perf_inp": {
+          "score": 3.95,
+          "opinions": null,
+          "interaction_count": 6,
+          "focus_time_ms": 571
+        },
+        "perf_tbt": {
+          "score": 2.35,
+          "opinions": "اسکرول کردن در سایت بعد از باز کردن یک سریال سخت هست",
+          "interaction_count": 9,
+          "focus_time_ms": 1335
+        },
+        "perf_fcp": {
+          "score": 4.3,
+          "opinions": null,
+          "interaction_count": 9,
+          "focus_time_ms": 818
+        },
+        "val_satisfaction": {
+          "score": 2.4,
+          "opinions": null,
+          "interaction_count": 17,
+          "focus_time_ms": 1727
+        },
+        "val_success": {
+          "score": 1.9,
+          "opinions": "مخصوصا امروز مشکل داشتم",
+          "interaction_count": 5,
+          "focus_time_ms": 326
+        }
+      }
+    }
+  }
+}
