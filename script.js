@@ -1,6 +1,6 @@
+// تزریق استایل‌های اصلاح‌شده برای زیباسازی آکادمیک، بج زمان و پنجره انتخاب کاستوم رسمی (Modal)
 const styleFixes = document.createElement('style');
 styleFixes.textContent = `
-  /* تبدیل متن خوش‌آمدگویی به یک کارت راهنمای شیک، لطیف و هماهنگ با تم */
   [data-i18n="demographics_desc"] { 
     white-space: pre-line; 
     line-height: 1.8; 
@@ -8,43 +8,88 @@ styleFixes.textContent = `
     text-align: justify;
     font-size: 0.95rem;
     padding: 24px;
-    background: linear-gradient(135deg, rgba(255, 131, 162, 0.04) 0%, rgba(158, 123, 255, 0.04) 100%);
-    border: 1px solid rgba(158, 123, 255, 0.15);
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.03) 0%, rgba(59, 130, 246, 0.03) 100%);
+    border: 1px solid rgba(30, 58, 138, 0.15);
     border-radius: 16px;
-    color: #4A5568;
+    color: #1E293B;
     box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.01);
   }
 
-  /* استایل بج زمان تقریبی تکمیل پرسشنامه */
   #estimated-time-badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     padding: 6px 14px;
-    background-color: #FFF0F3;
-    border: 1px dashed #FF85A2;
+    background-color: #EFF6FF;
+    border: 1px dashed #3B82F6;
     border-radius: 20px;
-    color: #FF6B8B;
+    color: #1E3A8A;
     font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 24px;
     width: max-content;
   }
 
-  /* سازگاری کارت و بج با حالت دارک‌مود */
+  /* استایل‌های پنجره انتخاب کاستوم رسمی (HCI Custom Academic Modal) */
+  .custom-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10000; opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .custom-modal-overlay.show { opacity: 1; pointer-events: auto; }
+  .custom-modal-card {
+    background: #FFFFFF; padding: 30px; border-radius: 24px;
+    width: 90%; max-width: 480px; text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    border: 1px solid rgba(30, 58, 138, 0.2);
+    transform: translateY(20px); transition: transform 0.3s ease;
+  }
+  .custom-modal-overlay.show .custom-modal-card { transform: translateY(0); }
+  .custom-modal-title { font-size: 1.3rem; font-weight: 700; color: #1E3A8A; margin-bottom: 12px; }
+  .custom-modal-text { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-bottom: 24px; }
+  .custom-modal-actions { display: flex; gap: 12px; justify-content: center; }
+  .modal-btn {
+    padding: 12px 20px; border-radius: 12px; font-weight: 600; font-size: 0.9rem;
+    cursor: pointer; transition: all 0.2s ease; border: none;
+  }
+  .modal-btn-primary { background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%); color: white; }
+  .modal-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3); }
+  .modal-btn-secondary { background: #F1F5F9; color: #475569; border: 1px solid #E2E8F0; }
+  .modal-btn-secondary:hover { background: #E2E8F0; }
+
+  /* هماهنگی با حالت دارک‌مود دانشگاهی */
   .dark-theme [data-i18n="demographics_desc"] {
-    background: linear-gradient(135deg, rgba(255, 131, 162, 0.06) 0%, rgba(158, 123, 255, 0.06) 100%);
-    border-color: rgba(158, 123, 255, 0.3);
-    color: #E2E8F0;
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+    border-color: rgba(59, 130, 246, 0.3); color: #E2E8F0;
   }
-  
-  .dark-theme #estimated-time-badge {
-    background-color: rgba(255, 133, 162, 0.12);
-    border-color: #FF85A2;
-    color: #FF85A2;
-  }
+  .dark-theme #estimated-time-badge { background-color: rgba(30, 58, 138, 0.4); border-color: #3B82F6; color: #93C5FD; }
+  .dark-theme .custom-modal-card { background: #0F172A; border-color: rgba(59, 130, 246, 0.4); }
+  .dark-theme .custom-modal-title { color: #3B82F6; }
+  .dark-theme .custom-modal-text { color: #94A3B8; }
+  .dark-theme .modal-btn-secondary { background: #1E293B; color: #E2E8F0; border-color: #334155; }
+  .dark-theme .modal-btn-secondary:hover { background: #334155; }
 `;
 document.head.appendChild(styleFixes);
+
+// ایجاد المان‌های پنجره انتخاب در DOM
+const modalOverlay = document.createElement('div');
+modalOverlay.className = 'custom-modal-overlay';
+modalOverlay.id = 'decision-modal';
+modalOverlay.innerHTML = `
+  <div class="custom-modal-card">
+    <div class="custom-modal-title" id="modal-title">ثبت موفقیت‌آمیز اطلاعات</div>
+    <div class="custom-modal-text" id="modal-text">اطلاعات ارزیابی این وب‌سایت با موفقیت ذخیره شد. مایلید یک وب‌سایت دیگر را هم تست کنید یا فرآیند پایان یابد؟</div>
+    <div class="custom-modal-actions">
+      <button class="modal-btn modal-btn-primary" id="modal-btn-continue">بررسی وب‌سایت بعدی 🔄</button>
+      <button class="modal-btn modal-btn-secondary" id="modal-btn-close">اتمام و خروج ❌</button>
+    </div>
+  </div>
+`;
+document.body.appendChild(modalOverlay);
 
 const translations = {
   en: {
@@ -56,7 +101,7 @@ In this study, we aim to evaluate user experiences while interacting with a webs
 You do not need any specialized knowledge or familiarity with web design or Human-Computer Interaction (HCI) to participate in this questionnaire. Simply explore the website as you normally would and answer the questions based on your personal experience and opinion.
 All your responses are confidential and will be used solely for research purposes.
 Thank you for your valuable support and cooperation, and we hope completing this questionnaire won't take much of your time.`,
-    estimated_time: "⏱️ Estimated time to complete: 3 to 5 minutes",
+    estimated_time: "⏱️ Estimated time per site: 3 to 5 minutes",
     name_placeholder: "Name or Pseudonym",
     age_placeholder: "Age",
     job_placeholder: "Job / Field of Study (Optional)",
@@ -67,24 +112,23 @@ Thank you for your valuable support and cooperation, and we hope completing this
     legend_max: "5.0 = Strongly Agree",
     not_rated: "Not Rated yet",
     opinion_holder: "Optional: Share your thoughts or context for this rating...",
-    submit_btn_next: "Submit & Proceed to Next Website",
-    submit_btn_final: "Submit Final Evaluation",
+    submit_btn_general: "Submit Evaluation Metrics",
     validation_alert: "Validation Error: Please review and calibrate all continuous rating sliders before submitting.",
     validation_demographics_alert: "Please enter your Name and Age to initialize your study profile.",
     evaluating_target: "Currently Evaluating Platform:",
     visit_site_btn: "Open Website in Split Screen ↗",
-    completion_alert: "Excellent! Your evaluation is complete and successfully submitted. Thank you for your participation!",
+    completion_alert: "Excellent! Your evaluation campaign is complete and successfully submitted. Thank you for your participation!",
+    modal_title: "Evaluation Submitted Successfully",
+    modal_text: "Your ratings for this website have been securely logged. Would you like to evaluate another website to enrich our research data, or finish the session?",
+    modal_btn_cont: "Evaluate Another Site 🔄",
+    modal_btn_end: "Finish & Exit ❌",
     categories: {
-      part1: "Part 1: Ease of Use",
-      part2: "Part 2: Website Speed & Performance",
-      part3: "Part 3: Overall Satisfaction"
+      part1: "Part 1: Interaction & Usability Design (HCI)",
+      part2: "Part 2: Technical Speed & Responsiveness",
+      part3: "Part 3: Overall Validation"
     },
     likert: {
-      str_disagree: "Strongly Disagree",
-      disagree: "Disagree",
-      neutral: "Neutral",
-      agree: "Agree",
-      str_agree: "Strongly Agree"
+      str_disagree: "Strongly Disagree", disagree: "Disagree", neutral: "Neutral", agree: "Agree", str_agree: "Strongly Agree"
     },
     questions: {
       hci_flexibility: "It is easy to use the site in different ways based on my needs.",
@@ -97,6 +141,8 @@ Thank you for your valuable support and cooperation, and we hope completing this
       perf_inp: "The site responds quickly when I type or click things.",
       perf_tbt: "I can scroll and click immediately without waiting for the page to unfreeze.",
       perf_fcp: "The website loads up very fast.",
+      perf_tti: "Once the site loads, it is immediately ready and I can use the parts without waiting.",
+      perf_fid: "The very first time I clicked a button or a link, the site responded immediately without delay.",
       val_satisfaction: "Overall, I am happy with my experience on this site.",
       val_success: "I easily finished what I wanted to do on the site today."
     }
@@ -110,7 +156,7 @@ Thank you for your valuable support and cooperation, and we hope completing this
 برای شرکت در این پرسشنامه نیازی به دانش تخصصی یا آشنایی با طراحی وب و تعامل انسان و کامپیوتر (HCI) ندارید. تنها کافی است وب‌سایت را مانند همیشه بررسی کنید و بر اساس تجربه و نظر شخصی خود به پرسش‌ها پاسخ دهید.
 تمام پاسخ‌های شما محرمانه است و فقط برای اهداف پژوهشی استفاده خواهد شد.
 از همراهی و همکاری ارزشمند شما سپاسگزاریم و امیدواریم تکمیل این پرسشنامه زمان زیادی از شما نگیرد.`,
-    estimated_time: "⏱️ زمان تقریبی پاسخگویی: ۳ الی ۵ دقیقه",
+    estimated_time: "⏱️ زمان تقریبی هر سایت: ۳ الی ۵ دقیقه",
     name_placeholder: "نام یا نام مستعار",
     age_placeholder: "سن",
     job_placeholder: "شغل / رشته تحصیلی (اختیاری)",
@@ -121,24 +167,23 @@ Thank you for your valuable support and cooperation, and we hope completing this
     legend_max: "۵.۰ = کاملاً موافقم",
     not_rated: "هنوز امتیازی داده نشده",
     opinion_holder: "اختیاری: دیدگاه یا دلیل خود را برای این امتیاز بنویسید...",
-    submit_btn_next: "ثبت و ورود به وب‌سایت بعدی",
-    submit_btn_final: "ثبت نهایی اطلاعات ارزیابی",
+    submit_btn_general: "ثبت اطلاعات ارزیابی وب‌سایت",
     validation_alert: "خطای اعتبار‌سنجی: لطفاً قبل از ارسال فرم، تمام نوارهای امتیازدهی را تنظیم کنید.",
     validation_demographics_alert: "لطفاً برای ایجاد پروفایل ارزیابی، نام و سن خود را وارد کنید.",
     evaluating_target: "وب‌سایت در حال ارزیابی:",
     visit_site_btn: "باز کردن هم‌زمان وب‌سایت در نیم‌صفحه کنار ↗",
-    completion_alert: "بسیار عالی! ارزیابی شما با موفقیت ثبت شد. از زمان و همکاری شما صمیمانه سپاسگزاریم!",
+    completion_alert: "بسیار عالی! تمام ارزیابی‌های شما با موفقیت در پرونده شما ذخیره شد. از زمان و همکاری صمیمانه شما سپاسگزاریم!",
+    modal_title: "ثبت موفقیت‌آمیز اطلاعات وب‌سایت",
+    modal_text: "امتیازات شما برای این وب‌سایت با موفقیت ثبت شد. مایلید برای کمک به دقت پژوهش ما، یک وب‌سایت دیگر را هم ارزیابی کنید یا مایلید فرآیند را تمام کنید؟",
+    modal_btn_cont: "بررسی وب‌سایت بعدی 🔄",
+    modal_btn_end: "اتمام و خروج نهایی ❌",
     categories: {
-      part1: "بخش ۱: راحتی در استفاده از سایت",
-      part2: "بخش ۲: سرعت و عملکرد سایت",
-      part3: "بخش ۳: رضایت کلی"
+      part1: "بخش ۱: طراحی تعاملی و اصول کاربری (HCI)",
+      part2: "بخش ۲: سرعت فنی و واکنش‌گرایی سایت",
+      part3: "بخش ۳: اعتبارسنجی و رضایت کلی"
     },
     likert: {
-      str_disagree: "کاملاً مخالفم",
-      disagree: "مخالفم",
-      neutral: "بی‌نظر",
-      agree: "موافقم",
-      str_agree: "کاملاً موافقم"
+      str_disagree: "کاملاً مخالفم", disagree: "مخالفم", neutral: "بی‌نظر", agree: "موافقم", str_agree: "کاملاً موافقم"
     },
     questions: {
       hci_flexibility: "استفاده از سایت به روش‌های مختلف و بر اساس نیاز من راحت است.",
@@ -151,13 +196,15 @@ Thank you for your valuable support and cooperation, and we hope completing this
       perf_inp: "سایت موقع کلیک کردن یا تایپ کردن خیلی سریع جواب می‌دهد.",
       perf_tbt: "بدون معطل شدن یا قفل کردن صفحه، می‌توانم فوراً اسکرول کنم و کلیک کنم.",
       perf_fcp: "سایت خیلی سریع و زود بالا می‌آید.",
+      perf_tti: "به محض اینکه ظاهر سایت بالا آمد، فوراً آماده به کار بود و قطعات سایت برای کلیک کردن من معطلم نکردند.",
+      perf_fid: "همان اولین باری که روی یک دکمه یا لینک کلیک کردم، سایت بدون هیچ مکثی فوراً عکس‌العمل نشان داد.",
       val_satisfaction: "در کل، از کار کردن با این سایت راضی هستم.",
       val_success: "امروز کارم را در این سایت راحت و بدون دردسر انجام دادم."
     }
   }
 };
 
-// Full database pool of available systems
+// مخزن کامل سیستم‌ها برای چرخه ارزیابی
 const masterWebsitesPool = [
   { id: "digikala", nameEn: "Digikala (E-Commerce)", nameFa: "دیجی‌کالا (فروشگاه آنلاین)", url: "https://www.digikala.com" },
   { id: "snapp", nameEn: "Snapp (Super App)", nameFa: "اسنپ (سوپر اپلیکیشن)", url: "https://www.snapp.ir" },
@@ -167,29 +214,27 @@ const masterWebsitesPool = [
   { id: "torob", nameEn: "Torob (Shopping Search Engine)", nameFa: "ترب (موتور جستجوی خرید)", url: "https://torob.com" }
 ];
 
-// 🎲 Randomization Engine: Pick exactly ONE random target for this specific session execution
-const websitesPool = [masterWebsitesPool[Math.floor(Math.random() * masterWebsitesPool.length)]];
+// لیست سایتهای ارزیابی شده در این نشست برای جلوگیری از تکرار
+let evaluatedWebsiteIds = [];
+let currentWebsite = null;
 
+// ۱۲ شاخص استاندارد شده بر اساس مدارک تصویری پژوهش شما
 const surveyStructure = [
   { catKey: "part1", questions: ["hci_flexibility", "hci_applicability", "hci_accessibility", "hci_reliability", "hci_responsiveness", "hci_consistency"] },
-  { catKey: "part2", questions: ["perf_cls", "perf_inp", "perf_tbt", "perf_fcp"] },
+  { catKey: "part2", questions: ["perf_cls", "perf_inp", "perf_tbt", "perf_fcp", "perf_tti", "perf_fid"] }, 
   { catKey: "part3", questions: ["val_satisfaction", "val_success"] }
 ];
 
 let currentLang = 'fa'; 
 let currentTheme = 'light';
-let currentWebsiteIndex = 0;
 
+// آبجکت واحد فایل JSON که اطلاعات تمام سایت‌ها در همین یک فایل آپدیت می‌شود
 const compiledDataset = {
   session_metadata: {
     total_duration_seconds: 0,
     generated_timestamp: new Date().toISOString(),
-    evaluation_campaign_size: websitesPool.length,
-    participant: {
-      name: null,
-      age: null,
-      job_or_field: null
-    }
+    evaluated_sites_count: 0,
+    participant: { name: null, age: null, job_or_field: null }
   },
   website_evaluations: {}
 };
@@ -201,6 +246,13 @@ let totalQuestionsCount = 0;
 let currentParticipantFilename = null;
 
 const surveyContainer = document.getElementById('survey-content');
+
+// انتخاب سایت تصادفی جدید که قبلاً در این نشست تست نشده باشد
+function pickRandomUnvisitedWebsite() {
+  const availableSites = masterWebsitesPool.filter(site => !evaluatedWebsiteIds.includes(site.id));
+  if (availableSites.length === 0) return null; 
+  return availableSites[Math.floor(Math.random() * availableSites.length)];
+}
 
 function initializeFormStructure() {
   surveyContainer.innerHTML = ''; 
@@ -313,13 +365,14 @@ function initializeFormStructure() {
 function updateSingleSliderFill(slider) {
   const percentage = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
   const isRtl = document.body.classList.contains('rtl');
-  const computedTrackColor = getComputedStyle(document.body).getPropertyValue('--track-bg').trim() || '#E2E8F0';
+  const computedTrackColor = getComputedStyle(document.body).getPropertyValue('--track-bg').trim() || '#CBD5E1';
   const directionalFlow = isRtl ? 'to left' : 'to right';
   
   if (slider.classList.contains('unrated')) {
     slider.style.background = computedTrackColor;
   } else {
-    slider.style.background = `linear-gradient(${directionalFlow}, #FF85A2 0%, #9E7BFF ${percentage}%, ${computedTrackColor} ${percentage}%, ${computedTrackColor} 100%)`;
+    // اصلاح فیلر اسلایدر به یک رنگ گرادینت آکادمیک و موقر (سورمه‌ای به آبی آسمانی پژوهشی)
+    slider.style.background = `linear-gradient(${directionalFlow}, #1E3A8A 0%, #3B82F6 ${percentage}%, ${computedTrackColor} ${percentage}%, ${computedTrackColor} 100%)`;
   }
 }
 
@@ -340,31 +393,30 @@ function evaluateContextString(val) {
 
 function applyLanguagePack() {
   const pack = translations[currentLang];
-  const currentWebsite = websitesPool[currentWebsiteIndex];
   
   document.body.dir = currentLang === 'fa' ? 'rtl' : 'ltr';
   document.body.classList.toggle('rtl', currentLang === 'fa');
 
-  document.getElementById('target-site-title').textContent = currentLang === 'fa' ? currentWebsite.nameFa : currentWebsite.nameEn;
-  document.getElementById('target-site-link').href = currentWebsite.url;
+  if (currentWebsite) {
+    document.getElementById('target-site-title').textContent = currentLang === 'fa' ? currentWebsite.nameFa : currentWebsite.nameEn;
+    document.getElementById('target-site-link').href = currentWebsite.url;
+  }
 
   document.getElementById('user-name').placeholder = pack.name_placeholder;
   document.getElementById('user-age').placeholder = pack.age_placeholder;
   document.getElementById('user-job').placeholder = pack.job_placeholder;
 
-  const submitBtn = document.getElementById('master-submit-btn');
-  if (currentWebsiteIndex < websitesPool.length - 1) {
-    submitBtn.textContent = pack.submit_btn_next;
-  } else {
-    submitBtn.textContent = pack.submit_btn_final;
-  }
+  document.getElementById('master-submit-btn').textContent = pack.submit_btn_general;
+  
+  document.getElementById('modal-title').textContent = pack.modal_title;
+  document.getElementById('modal-text').textContent = pack.modal_text;
+  document.getElementById('modal-btn-continue').textContent = pack.modal_btn_cont;
+  document.getElementById('modal-btn-close').textContent = pack.modal_btn_end;
 
   document.querySelectorAll('[data-i18n]').forEach(element => {
     const key = element.getAttribute('data-i18n');
     if (pack[key]) {
       element.textContent = pack[key];
-      
-      // تزریق یا به‌روزرسانی داینامیک بج زمان تقریبی بلافاصله پس از تولید متن توضیحات خوش‌آمدگویی
       if (key === 'demographics_desc') {
         let badge = document.getElementById('estimated-time-badge');
         if (!badge) {
@@ -410,7 +462,15 @@ function updateFormProgress() {
   document.getElementById('survey-progress').style.width = `${progressPercent}%`;
 }
 
-function cleanResetFormState() {
+function setupNextWebsiteEvaluation() {
+  currentWebsite = pickRandomUnvisitedWebsite();
+  
+  if (!currentWebsite) {
+    alert(translations[currentLang].completion_alert);
+    document.getElementById('screen-evaluation').style.display = 'none';
+    return;
+  }
+
   targetStageStartTime = Date.now();
   document.getElementById('questionnaire-form').reset();
   
@@ -444,21 +504,39 @@ async function syncDatasetToGitHub(payload) {
       method: "POST",
       body: JSON.stringify({
         filename: currentParticipantFilename, 
-        payload: payload
+        payload: payload 
       })
     });
     
     if (response.ok) {
-      console.log("State successfully compiled and streamed through Google endpoint proxy.");
+      console.log("Central JSON state file updated successfully via proxy stream.");
     } else {
-      console.error("Proxy rejected data stream transmission request.");
+      console.error("Proxy rejected centralized data sync payload.");
     }
   } catch (error) {
     console.error("Network interface pipeline dropped:", error);
   }
 }
 
-// Theme Event Wire
+function showDecisionModal() {
+  document.getElementById('decision-modal').classList.add('show');
+}
+
+function hideDecisionModal() {
+  document.getElementById('decision-modal').classList.remove('show');
+}
+
+document.getElementById('modal-btn-continue').addEventListener('click', () => {
+  hideDecisionModal();
+  setupNextWebsiteEvaluation();
+});
+
+document.getElementById('modal-btn-close').addEventListener('click', () => {
+  hideDecisionModal();
+  alert(translations[currentLang].completion_alert);
+  document.getElementById('screen-evaluation').style.display = 'none';
+});
+
 document.getElementById('theme-toggle-btn').addEventListener('click', () => {
   currentTheme = currentTheme === 'light' ? 'dark' : 'light';
   document.body.classList.toggle('dark-theme', currentTheme === 'dark');
@@ -466,13 +544,11 @@ document.getElementById('theme-toggle-btn').addEventListener('click', () => {
   refreshAllSliderFills();
 });
 
-// Localization Switch Wire
 document.getElementById('lang-toggle-btn').addEventListener('click', () => {
   currentLang = currentLang === 'en' ? 'fa' : 'en';
   applyLanguagePack();
 });
 
-// STEP 1: Registration Transition Engine
 document.getElementById('start-session-btn').addEventListener('click', () => {
   const nameVal = document.getElementById('user-name').value.trim();
   const ageVal = document.getElementById('user-age').value.trim();
@@ -491,33 +567,31 @@ document.getElementById('start-session-btn').addEventListener('click', () => {
 
   const sanitizedName = nameVal.toLowerCase().replace(/[^a-z0-9]/g, '_');
   const timestamp = Math.floor(Date.now() / 1000);
-  currentParticipantFilename = `${sanitizedName}_${timestamp}.json`;
+  currentParticipantFilename = `${sanitizedName}_${timestamp}.json`; 
 
   campaignGlobalStartTime = Date.now();
+  
+  currentWebsite = pickRandomUnvisitedWebsite();
   targetStageStartTime = Date.now();
 
   regCard.style.display = 'none';
   document.getElementById('screen-evaluation').style.display = 'block';
   
+  applyLanguagePack();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// ⚡️ موتور هوشمند Split Screen: باز کردن پنجره هدف در نیم‌صفحه چپ به صورت خودکار
 document.getElementById('target-site-link').addEventListener('click', function(e) {
   e.preventDefault();
-  
   const halfWidth = Math.floor(window.screen.availWidth / 2);
   const fullHeight = window.screen.availHeight;
-
   const features = `width=${halfWidth},height=${fullHeight},left=0,top=0,resizable=yes,scrollbars=yes,status=no,location=yes`;
   window.open(this.href, 'hciTargetPlatformWindow', features);
 });
 
-// STEP 2: Multi-Website Loop Form Submission Handler
 document.getElementById('questionnaire-form').addEventListener('submit', function(e) {
   e.preventDefault();
 
-  const currentWebsite = websitesPool[currentWebsiteIndex];
   const formData = new FormData(this);
   
   const currentWebsitePayload = {
@@ -540,18 +614,14 @@ document.getElementById('questionnaire-form').addEventListener('submit', functio
   }
 
   compiledDataset.website_evaluations[currentWebsite.id] = currentWebsitePayload;
+  
+  evaluatedWebsiteIds.push(currentWebsite.id);
+  compiledDataset.session_metadata.evaluated_sites_count = evaluatedWebsiteIds.length;
+  compiledDataset.session_metadata.total_duration_seconds = parseFloat(((Date.now() - campaignGlobalStartTime) / 1000).toFixed(2));
 
-  if (currentWebsiteIndex < websitesPool.length - 1) {
-    syncDatasetToGitHub(compiledDataset);
-    currentWebsiteIndex++;
-    cleanResetFormState();
-  } else {
-    compiledDataset.session_metadata.total_duration_seconds = parseFloat(((Date.now() - campaignGlobalStartTime) / 1000).toFixed(2));
-    syncDatasetToGitHub(compiledDataset);
-    alert(translations[currentLang].completion_alert);
-  }
+  syncDatasetToGitHub(compiledDataset);
+  showDecisionModal();
 });
 
-// Initial Setup Activation on Load
 initializeFormStructure();
 applyLanguagePack();
