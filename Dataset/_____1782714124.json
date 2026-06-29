@@ -1,0 +1,93 @@
+{
+  "session_metadata": {
+    "total_duration_seconds": 151.89,
+    "generated_timestamp": "2026-06-29T06:19:57.950Z",
+    "evaluation_campaign_size": 1,
+    "participant": {
+      "name": "مریم",
+      "age": 49,
+      "job_or_field": "استاد"
+    }
+  },
+  "website_evaluations": {
+    "aparat": {
+      "website_id": "aparat",
+      "url": "https://www.aparat.com",
+      "time_spent_seconds": 151.89,
+      "metrics": {
+        "hci_flexibility": {
+          "score": 4.25,
+          "opinions": null,
+          "interaction_count": 19,
+          "focus_time_ms": 3633
+        },
+        "hci_applicability": {
+          "score": 4.4,
+          "opinions": null,
+          "interaction_count": 9,
+          "focus_time_ms": 663
+        },
+        "hci_accessibility": {
+          "score": 4.4,
+          "opinions": null,
+          "interaction_count": 12,
+          "focus_time_ms": 890
+        },
+        "hci_reliability": {
+          "score": 3.85,
+          "opinions": null,
+          "interaction_count": 5,
+          "focus_time_ms": 283
+        },
+        "hci_responsiveness": {
+          "score": 4.35,
+          "opinions": null,
+          "interaction_count": 8,
+          "focus_time_ms": 601
+        },
+        "hci_consistency": {
+          "score": 3.75,
+          "opinions": null,
+          "interaction_count": 7,
+          "focus_time_ms": 575
+        },
+        "perf_cls": {
+          "score": 4.05,
+          "opinions": null,
+          "interaction_count": 8,
+          "focus_time_ms": 576
+        },
+        "perf_inp": {
+          "score": 4.1,
+          "opinions": null,
+          "interaction_count": 5,
+          "focus_time_ms": 326
+        },
+        "perf_tbt": {
+          "score": 3.5,
+          "opinions": null,
+          "interaction_count": 8,
+          "focus_time_ms": 997
+        },
+        "perf_fcp": {
+          "score": 3.75,
+          "opinions": null,
+          "interaction_count": 7,
+          "focus_time_ms": 452
+        },
+        "val_satisfaction": {
+          "score": 4.05,
+          "opinions": null,
+          "interaction_count": 7,
+          "focus_time_ms": 465
+        },
+        "val_success": {
+          "score": 4.2,
+          "opinions": null,
+          "interaction_count": 10,
+          "focus_time_ms": 846
+        }
+      }
+    }
+  }
+}
