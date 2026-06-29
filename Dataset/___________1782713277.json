@@ -1,6 +1,6 @@
 {
   "session_metadata": {
-    "total_duration_seconds": 316.08,
+    "total_duration_seconds": 346.19,
     "generated_timestamp": "2026-06-29T06:02:45.736Z",
     "evaluation_campaign_size": 1,
     "participant": {
@@ -13,7 +13,7 @@
     "snapp": {
       "website_id": "snapp",
       "url": "https://www.snapp.ir",
-      "time_spent_seconds": 316.08,
+      "time_spent_seconds": 346.19,
       "metrics": {
         "hci_flexibility": {
           "score": 2.8,
