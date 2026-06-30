@@ -1,8 +1,8 @@
 {
   "session_metadata": {
-    "total_duration_seconds": 347.74,
+    "total_duration_seconds": 606.63,
     "generated_timestamp": "2026-06-30T18:53:21.563Z",
-    "evaluated_sites_count": 2,
+    "evaluated_sites_count": 3,
     "participant": {
       "name": ".",
       "age": 20,
@@ -189,6 +189,97 @@
           "opinions": null,
           "interaction_count": 45,
           "focus_time_ms": 6785
+        }
+      }
+    },
+    "torob": {
+      "website_id": "torob",
+      "url": "https://torob.com",
+      "time_spent_seconds": 253.34,
+      "metrics": {
+        "hci_flexibility": {
+          "score": 2.5,
+          "opinions": null,
+          "interaction_count": 40,
+          "focus_time_ms": 6970
+        },
+        "hci_applicability": {
+          "score": 3.5,
+          "opinions": null,
+          "interaction_count": 19,
+          "focus_time_ms": 3501
+        },
+        "hci_accessibility": {
+          "score": 3,
+          "opinions": null,
+          "interaction_count": 52,
+          "focus_time_ms": 7820
+        },
+        "hci_reliability": {
+          "score": 3.5,
+          "opinions": null,
+          "interaction_count": 52,
+          "focus_time_ms": 9060
+        },
+        "hci_responsiveness": {
+          "score": 3,
+          "opinions": null,
+          "interaction_count": 34,
+          "focus_time_ms": 7470
+        },
+        "hci_consistency": {
+          "score": 2.5,
+          "opinions": null,
+          "interaction_count": 30,
+          "focus_time_ms": 5490
+        },
+        "perf_cls": {
+          "score": 3,
+          "opinions": null,
+          "interaction_count": 14,
+          "focus_time_ms": 2279
+        },
+        "perf_inp": {
+          "score": 2.5,
+          "opinions": null,
+          "interaction_count": 11,
+          "focus_time_ms": 2543
+        },
+        "perf_tbt": {
+          "score": 3,
+          "opinions": null,
+          "interaction_count": 24,
+          "focus_time_ms": 4589
+        },
+        "perf_fcp": {
+          "score": 2.5,
+          "opinions": null,
+          "interaction_count": 13,
+          "focus_time_ms": 3563
+        },
+        "perf_tti": {
+          "score": 3,
+          "opinions": null,
+          "interaction_count": 10,
+          "focus_time_ms": 1845
+        },
+        "perf_fid": {
+          "score": 3,
+          "opinions": null,
+          "interaction_count": 38,
+          "focus_time_ms": 6343
+        },
+        "val_satisfaction": {
+          "score": 3,
+          "opinions": null,
+          "interaction_count": 17,
+          "focus_time_ms": 2857
+        },
+        "val_success": {
+          "score": null,
+          "opinions": null,
+          "interaction_count": 0,
+          "focus_time_ms": 0
         }
       }
     }
