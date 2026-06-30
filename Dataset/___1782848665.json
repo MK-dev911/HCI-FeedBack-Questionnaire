@@ -1,0 +1,105 @@
+{
+  "session_metadata": {
+    "total_duration_seconds": 92.94,
+    "generated_timestamp": "2026-06-30T19:44:10.988Z",
+    "evaluated_sites_count": 1,
+    "participant": {
+      "name": "فض",
+      "age": 26,
+      "job_or_field": "لویکک"
+    }
+  },
+  "website_evaluations": {
+    "divar": {
+      "website_id": "divar",
+      "url": "https://divar.ir",
+      "time_spent_seconds": 92.94,
+      "metrics": {
+        "hci_flexibility": {
+          "score": 1.8,
+          "opinions": "تست",
+          "interaction_count": 11,
+          "focus_time_ms": 281
+        },
+        "hci_applicability": {
+          "score": 2.2,
+          "opinions": "تست",
+          "interaction_count": 1,
+          "focus_time_ms": 1
+        },
+        "hci_accessibility": {
+          "score": 3.1,
+          "opinions": "تست",
+          "interaction_count": 32,
+          "focus_time_ms": 872
+        },
+        "hci_reliability": {
+          "score": 1,
+          "opinions": "تست",
+          "interaction_count": 42,
+          "focus_time_ms": 1419
+        },
+        "hci_responsiveness": {
+          "score": 2.8,
+          "opinions": "تست",
+          "interaction_count": 69,
+          "focus_time_ms": 2753
+        },
+        "hci_consistency": {
+          "score": 4.4,
+          "opinions": "تست",
+          "interaction_count": 14,
+          "focus_time_ms": 247
+        },
+        "perf_cls": {
+          "score": 1.1,
+          "opinions": "تست",
+          "interaction_count": 16,
+          "focus_time_ms": 362
+        },
+        "perf_inp": {
+          "score": 4.55,
+          "opinions": "تست",
+          "interaction_count": 16,
+          "focus_time_ms": 248
+        },
+        "perf_tbt": {
+          "score": 4.3,
+          "opinions": "تست",
+          "interaction_count": 16,
+          "focus_time_ms": 416
+        },
+        "perf_fcp": {
+          "score": 4.3,
+          "opinions": "تست",
+          "interaction_count": 26,
+          "focus_time_ms": 456
+        },
+        "perf_tti": {
+          "score": 4.7,
+          "opinions": "تست",
+          "interaction_count": 19,
+          "focus_time_ms": 388
+        },
+        "perf_fid": {
+          "score": 3.9,
+          "opinions": "تست",
+          "interaction_count": 15,
+          "focus_time_ms": 422
+        },
+        "val_satisfaction": {
+          "score": 4.15,
+          "opinions": "تست",
+          "interaction_count": 15,
+          "focus_time_ms": 239
+        },
+        "val_success": {
+          "score": 4.1,
+          "opinions": "تست",
+          "interaction_count": 12,
+          "focus_time_ms": 223
+        }
+      }
+    }
+  }
+}
