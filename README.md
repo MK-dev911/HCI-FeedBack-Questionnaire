@@ -118,9 +118,10 @@ To combat geographic networking restrictions (where specific localized Iranian p
 ---
 
 ## 🚀 Tech Stack
-* **Language:** Vanilla ECMAScript 6+ (JavaScript)
-* **Markup/Styling:** HTML5 / Advanced CSS3 Custom Properties
-* **Data Interchange** Format: Standardized JSON Payload
+
+* **Core Runtime Engine:** Vanilla ECMAScript 6+ (JavaScript) – Zero-dependency, pure client-side execution logic.
+* **Markup & UI Layer:** HTML5 / Advanced CSS3 Custom Properties (Semantic variables for dynamic theme execution and bi-directional LTR/RTL structural layout overrides).
+* **Data Interchange & Schema Engine:** Standardized JSON Payload Architecture (Structured object serialization mapped natively for model ingestion and asynchronous database synchronization).
 
 ---
 
