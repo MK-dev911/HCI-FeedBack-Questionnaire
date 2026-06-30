@@ -1,5 +1,40 @@
 const styleFixes = document.createElement('style');
 styleFixes.textContent = `
+  /* 🌐 Securely import academic-standard web fonts via Google Fonts CDN */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap');
+
+  /* 🏛️ Modern Core Typography Rules */
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* 🇮🇷 Dedicated RTL Typography Framework for Persian Readability */
+  body.rtl, body.rtl * {
+    font-family: 'Vazirmatn', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif !important;
+    letter-spacing: 0;
+  }
+
+  /* ⚙️ UI Component Typography Polish */
+  .section-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.6;
+  }
+
+  .question-text {
+    font-weight: 500;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #1E293B;
+  }
+
+  .dark-theme .question-text {
+    color: #F1F5F9;
+  }
+
   [data-i18n="demographics_desc"] { 
     white-space: pre-line; 
     line-height: 1.8; 
@@ -27,6 +62,22 @@ styleFixes.textContent = `
     font-weight: 600;
     margin-bottom: 24px;
     width: max-content;
+  }
+
+  #vpn-notice-banner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 10px 16px;
+    background-color: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: 12px;
+    color: #92400E;
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.5;
+    animation: fadeIn 0.3s ease;
   }
 
   .custom-modal-overlay {
@@ -59,11 +110,20 @@ styleFixes.textContent = `
   .modal-btn-secondary { background: #F1F5F9; color: #475569; border: 1px solid #E2E8F0; }
   .modal-btn-secondary:hover { background: #E2E8F0; }
 
+  /* 🌌 Dark Mode Adjustments */
   .dark-theme [data-i18n="demographics_desc"] {
     background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
     border-color: rgba(59, 130, 246, 0.3); color: #E2E8F0;
   }
   .dark-theme #estimated-time-badge { background-color: rgba(30, 58, 138, 0.4); border-color: #3B82F6; color: #93C5FD; }
+  .dark-theme #vpn-notice-banner { background-color: rgba(45, 34, 14, 0.5); border-color: rgba(217, 119, 6, 0.3); color: #FCD34D; }
+  
+  /* ✨ Lighten link text and enforce customized border configuration in Dark Mode */
+  .dark-theme #target-site-link {
+    color: #F8FAFC !important;
+    border-color: #F8FAFC !important;
+  }
+  
   .dark-theme .custom-modal-card { background: #0F172A; border-color: rgba(59, 130, 246, 0.4); }
   .dark-theme .custom-modal-title { color: #3B82F6; }
   .dark-theme .custom-modal-text { color: #94A3B8; }
@@ -109,15 +169,18 @@ Thank you for your valuable support and cooperation, and we hope completing this
     not_rated: "Not Rated yet",
     opinion_holder: "Optional: Share your thoughts or context for this rating...",
     submit_btn_general: "Submit Evaluation Metrics",
-    validation_alert: "Validation Error: Please review and calibrate all continuous rating sliders before submitting.",
+    validation_alert: "Validation Error: Please answer at least few questions before submitting your evaluation.",
     validation_demographics_alert: "Please enter your Name and Age to initialize your study profile.",
     evaluating_target: "Currently Evaluating Platform:",
     visit_site_btn: "Open Website in Split Screen ↗",
+    vpn_notice_text: "⚠️ Note: If you are in Iran, please turn on your VPN to open international websites, or change the language configuration to Persian for domestic alternatives.",
     completion_alert: "Excellent! Your evaluation campaign is complete and successfully submitted. Thank you for your participation!",
     modal_title: "Evaluation Submitted Successfully",
     modal_text: "Your ratings for this website have been securely logged. Would you like to evaluate another website to enrich our research data, or finish the session?",
     modal_btn_cont: "Evaluate Another Site 🔄",
     modal_btn_end: "Finish & Exit ❌",
+    exit_screen_title: "Thank You! ✨",
+    exit_screen_desc: "Your session evaluations have been locked and synchronized safely into our data analytics pipeline. You can safely close this browser window now.",
     categories: {
       part1: "Part 1: Interaction & Usability Design (HCI)",
       part2: "Part 2: Technical Speed & Responsiveness",
@@ -164,15 +227,18 @@ Thank you for your valuable support and cooperation, and we hope completing this
     not_rated: "هنوز امتیازی داده نشده",
     opinion_holder: "اختیاری: دیدگاه یا دلیل خود را برای این امتیاز بنویسید...",
     submit_btn_general: "ثبت اطلاعات ارزیابی وب‌سایت",
-    validation_alert: "خطای اعتبار‌سنجی: لطفاً قبل از ارسال فرم، تمام نوارهای امتیازدهی را تنظیم کنید.",
+    validation_alert: "خطای اعتبارسنجی: لطفاً جهت اعتبار آماری پژوهش، حداقل به چندین سوال با دقت پاسخ دهید.",
     validation_demographics_alert: "لطفاً برای ایجاد پروفایل ارزیابی، نام و سن خود را وارد کنید.",
     evaluating_target: "وب‌سایت در حال ارزیابی:",
     visit_site_btn: "باز کردن هم‌زمان وب‌سایت در نیم‌صفحه کنار ↗",
+    vpn_notice_text: "⚠️ توجه: در صورتی که وب‌سایت مورد ارزیابی ایرانی است، لطفا جهت بارگذاری صحیح و بدون اختلال، فیلترشکن (VPN) خود را خاموش کنید.",
     completion_alert: "بسیار عالی! تمام ارزیابی‌های شما با موفقیت در پرونده شما ذخیره شد. از زمان و همکاری صمیمانه شما سپاسگزاریم!",
     modal_title: "ثبت موفقیت‌آمیز اطلاعات وب‌سایت",
     modal_text: "امتیازات شما برای این وب‌سایت با موفقیت ثبت شد. مایلید برای کمک به دقت پژوهش ما، یک وب‌سایت دیگر را هم ارزیابی کنید یا مایلید فرآیند را تمام کنید؟",
     modal_btn_cont: "بررسی وب‌سایت بعدی 🔄",
     modal_btn_end: "اتمام و خروج نهایی ❌",
+    exit_screen_title: "با تشکر از شما! ✨",
+    exit_screen_desc: "اطلاعات و ارزیابی‌های شما با موفقیت قفل و در خط لوله تحلیلی ما همگام‌سازی شد. اکنون می‌توانید با خیال راحت این برگه مرورگر را ببندید.",
     categories: {
       part1: "بخش ۱: طراحی تعاملی و اصول کاربری (HCI)",
       part2: "بخش ۲: سرعت فنی و واکنش‌گرایی سایت",
@@ -200,7 +266,6 @@ Thank you for your valuable support and cooperation, and we hope completing this
   }
 };
 
-// 🌍 پلتفرم جامع ارزیابی سیستم با معادل‌سازی فرامرزی
 const masterWebsitesPool = [
   { id: "digikala", nameEn: "Amazon (E-Commerce)", nameFa: "دیجی‌کالا (فروشگاه آنلاین)", urlFa: "https://www.digikala.com", urlEn: "https://www.amazon.com" },
   { id: "snapp", nameEn: "Uber (Ride-Hailing & Super App)", nameFa: "اسنپ (سوپر اپلیکیشن)", urlFa: "https://www.snapp.ir", urlEn: "https://www.uber.com" },
@@ -388,7 +453,6 @@ function applyLanguagePack() {
   document.body.dir = currentLang === 'fa' ? 'rtl' : 'ltr';
   document.body.classList.toggle('rtl', currentLang === 'fa');
 
-  // 🔄 تغییر آدرس و نام بر اساس لوکیشن انتخابی کاربر
   if (currentWebsite) {
     if (currentLang === 'fa') {
       document.getElementById('target-site-title').textContent = currentWebsite.nameFa;
@@ -409,6 +473,17 @@ function applyLanguagePack() {
   document.getElementById('modal-text').textContent = pack.modal_text;
   document.getElementById('modal-btn-continue').textContent = pack.modal_btn_cont;
   document.getElementById('modal-btn-close').textContent = pack.modal_btn_end;
+
+  const targetMetaBox = document.querySelector('.target-site-meta-box') || document.getElementById('target-site-link')?.parentElement;
+  if (targetMetaBox) {
+    let vpnBanner = document.getElementById('vpn-notice-banner');
+    if (!vpnBanner) {
+      vpnBanner = document.createElement('div');
+      vpnBanner.id = 'vpn-notice-banner';
+      targetMetaBox.appendChild(vpnBanner);
+    }
+    vpnBanner.textContent = pack.vpn_notice_text;
+  }
 
   document.querySelectorAll('[data-i18n]').forEach(element => {
     const key = element.getAttribute('data-i18n');
@@ -459,12 +534,31 @@ function updateFormProgress() {
   document.getElementById('survey-progress').style.width = `${progressPercent}%`;
 }
 
+function terminateAndCloseSession() {
+  const pack = translations[currentLang];
+  hideDecisionModal();
+  
+  const container = document.querySelector('.container');
+  container.innerHTML = `
+    <div class="header" style="animation: fadeIn 0.5s ease; padding: 4rem 2rem;">
+      <h1 class="main-gradient-title" style="font-size: 2.8rem; margin-bottom: 1.5rem;">${pack.exit_screen_title}</h1>
+      <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2.5rem auto; color: var(--text-muted); line-height: 1.8;">
+        ${pack.exit_screen_desc}
+      </p>
+      <button class="submit-btn" style="max-width: 250px; margin: 0 auto; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 1rem 2.5rem;" onclick="window.close()">
+         ${currentLang === 'fa' ? 'اتمام و بستن این صفحه ❌' : 'Finish and Close Tab ❌'}
+      </button>
+    </div>
+  `;
+  
+  window.close();
+}
+
 function setupNextWebsiteEvaluation() {
   currentWebsite = pickRandomUnvisitedWebsite();
   
   if (!currentWebsite) {
-    alert(translations[currentLang].completion_alert);
-    document.getElementById('screen-evaluation').style.display = 'none';
+    terminateAndCloseSession();
     return;
   }
 
@@ -529,9 +623,7 @@ document.getElementById('modal-btn-continue').addEventListener('click', () => {
 });
 
 document.getElementById('modal-btn-close').addEventListener('click', () => {
-  hideDecisionModal();
-  alert(translations[currentLang].completion_alert);
-  document.getElementById('screen-evaluation').style.display = 'none';
+  terminateAndCloseSession();
 });
 
 document.getElementById('theme-toggle-btn').addEventListener('click', () => {
@@ -588,6 +680,28 @@ document.getElementById('target-site-link').addEventListener('click', function(e
 
 document.getElementById('questionnaire-form').addEventListener('submit', function(e) {
   e.preventDefault();
+
+  let answeredCount = 0;
+  Object.keys(trackingMetrics).forEach(key => {
+    if (trackingMetrics[key].hasInteracted) answeredCount++;
+  });
+
+  if (answeredCount < 6) {
+    alert(translations[currentLang].validation_alert);
+    
+    Object.keys(trackingMetrics).forEach(key => {
+      const block = document.getElementById(`block_${key}`);
+      if (!trackingMetrics[key].hasInteracted && block) {
+        block.classList.add('required-error');
+      }
+    });
+
+    const firstError = document.querySelector('.question-block.required-error');
+    if (firstError) {
+      firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    return;
+  }
 
   const formData = new FormData(this);
   
