@@ -1,8 +1,8 @@
 {
   "session_metadata": {
-    "total_duration_seconds": 421.87,
+    "total_duration_seconds": 538.3,
     "generated_timestamp": "2026-06-30T20:18:17.612Z",
-    "evaluated_sites_count": 2,
+    "evaluated_sites_count": 3,
     "participant": {
       "name": "a",
       "age": 18,
@@ -189,6 +189,97 @@
           "opinions": null,
           "interaction_count": 24,
           "focus_time_ms": 2101
+        }
+      }
+    },
+    "aparat": {
+      "website_id": "aparat",
+      "url": "https://www.aparat.com",
+      "time_spent_seconds": 111.81,
+      "metrics": {
+        "hci_flexibility": {
+          "score": 4.15,
+          "opinions": null,
+          "interaction_count": 54,
+          "focus_time_ms": 3826
+        },
+        "hci_applicability": {
+          "score": 2.5,
+          "opinions": null,
+          "interaction_count": 25,
+          "focus_time_ms": 2648
+        },
+        "hci_accessibility": {
+          "score": 3.75,
+          "opinions": null,
+          "interaction_count": 34,
+          "focus_time_ms": 1225
+        },
+        "hci_reliability": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 25,
+          "focus_time_ms": 435
+        },
+        "hci_responsiveness": {
+          "score": 4.6,
+          "opinions": null,
+          "interaction_count": 25,
+          "focus_time_ms": 601
+        },
+        "hci_consistency": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 17,
+          "focus_time_ms": 317
+        },
+        "perf_cls": {
+          "score": 4.15,
+          "opinions": null,
+          "interaction_count": 39,
+          "focus_time_ms": 1855
+        },
+        "perf_inp": {
+          "score": 3.2,
+          "opinions": null,
+          "interaction_count": 18,
+          "focus_time_ms": 624
+        },
+        "perf_tbt": {
+          "score": 4,
+          "opinions": null,
+          "interaction_count": 32,
+          "focus_time_ms": 4564
+        },
+        "perf_fcp": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 15,
+          "focus_time_ms": 279
+        },
+        "perf_tti": {
+          "score": 3,
+          "opinions": null,
+          "interaction_count": 31,
+          "focus_time_ms": 1575
+        },
+        "perf_fid": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 19,
+          "focus_time_ms": 308
+        },
+        "val_satisfaction": {
+          "score": 2,
+          "opinions": null,
+          "interaction_count": 108,
+          "focus_time_ms": 13572
+        },
+        "val_success": {
+          "score": 1,
+          "opinions": null,
+          "interaction_count": 22,
+          "focus_time_ms": 1025
         }
       }
     }
