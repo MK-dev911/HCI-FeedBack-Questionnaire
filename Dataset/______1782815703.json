@@ -1,8 +1,8 @@
 {
   "session_metadata": {
-    "total_duration_seconds": 351.78,
+    "total_duration_seconds": 563.03,
     "generated_timestamp": "2026-06-30T10:34:27.668Z",
-    "evaluated_sites_count": 1,
+    "evaluated_sites_count": 2,
     "participant": {
       "name": "مهدیه",
       "age": 22,
@@ -98,6 +98,97 @@
           "opinions": null,
           "interaction_count": 18,
           "focus_time_ms": 5300
+        }
+      }
+    },
+    "digikala": {
+      "website_id": "digikala",
+      "url": "https://www.digikala.com",
+      "time_spent_seconds": 209.69,
+      "metrics": {
+        "hci_flexibility": {
+          "score": 3.5,
+          "opinions": null,
+          "interaction_count": 10,
+          "focus_time_ms": 1006
+        },
+        "hci_applicability": {
+          "score": 3.65,
+          "opinions": null,
+          "interaction_count": 13,
+          "focus_time_ms": 1949
+        },
+        "hci_accessibility": {
+          "score": 4.2,
+          "opinions": null,
+          "interaction_count": 17,
+          "focus_time_ms": 980
+        },
+        "hci_reliability": {
+          "score": 3.5,
+          "opinions": null,
+          "interaction_count": 12,
+          "focus_time_ms": 9195
+        },
+        "hci_responsiveness": {
+          "score": 3.55,
+          "opinions": null,
+          "interaction_count": 10,
+          "focus_time_ms": 954
+        },
+        "hci_consistency": {
+          "score": 3.5,
+          "opinions": null,
+          "interaction_count": 10,
+          "focus_time_ms": 2578
+        },
+        "perf_cls": {
+          "score": 2.6,
+          "opinions": null,
+          "interaction_count": 10,
+          "focus_time_ms": 2260
+        },
+        "perf_inp": {
+          "score": 2.55,
+          "opinions": null,
+          "interaction_count": 9,
+          "focus_time_ms": 6781
+        },
+        "perf_tbt": {
+          "score": 3.5,
+          "opinions": null,
+          "interaction_count": 12,
+          "focus_time_ms": 1702
+        },
+        "perf_fcp": {
+          "score": 2.55,
+          "opinions": null,
+          "interaction_count": 12,
+          "focus_time_ms": 3546
+        },
+        "perf_tti": {
+          "score": 3.1,
+          "opinions": null,
+          "interaction_count": 18,
+          "focus_time_ms": 7175
+        },
+        "perf_fid": {
+          "score": 3.3,
+          "opinions": null,
+          "interaction_count": 1,
+          "focus_time_ms": 0
+        },
+        "val_satisfaction": {
+          "score": 2.55,
+          "opinions": "سایت زیادی شلوغ است و تبلیغات حواسم را از هدف اصلی ام پرت کردند.",
+          "interaction_count": 4,
+          "focus_time_ms": 355
+        },
+        "val_success": {
+          "score": 3.5,
+          "opinions": "به کار کردن با این وبسایت عادت کرده ایم ولی روز به روز شلوغ تر میشود...",
+          "interaction_count": 6,
+          "focus_time_ms": 730
         }
       }
     }
