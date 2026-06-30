@@ -1,0 +1,105 @@
+{
+  "session_metadata": {
+    "total_duration_seconds": 272.21,
+    "generated_timestamp": "2026-06-30T19:55:10.712Z",
+    "evaluated_sites_count": 1,
+    "participant": {
+      "name": "کوثر المسلماوی",
+      "age": 22,
+      "job_or_field": "مهندسی کامپیوتر"
+    }
+  },
+  "website_evaluations": {
+    "torob": {
+      "website_id": "torob",
+      "url": "https://torob.com",
+      "time_spent_seconds": 272.21,
+      "metrics": {
+        "hci_flexibility": {
+          "score": 4.05,
+          "opinions": null,
+          "interaction_count": 67,
+          "focus_time_ms": 4161
+        },
+        "hci_applicability": {
+          "score": 3.65,
+          "opinions": null,
+          "interaction_count": 8,
+          "focus_time_ms": 638
+        },
+        "hci_accessibility": {
+          "score": 3.6,
+          "opinions": null,
+          "interaction_count": 8,
+          "focus_time_ms": 924
+        },
+        "hci_reliability": {
+          "score": 3.6,
+          "opinions": null,
+          "interaction_count": 13,
+          "focus_time_ms": 797
+        },
+        "hci_responsiveness": {
+          "score": 3,
+          "opinions": null,
+          "interaction_count": 49,
+          "focus_time_ms": 4233
+        },
+        "hci_consistency": {
+          "score": 3.65,
+          "opinions": null,
+          "interaction_count": 9,
+          "focus_time_ms": 413
+        },
+        "perf_cls": {
+          "score": 4.15,
+          "opinions": null,
+          "interaction_count": 26,
+          "focus_time_ms": 4995
+        },
+        "perf_inp": {
+          "score": 3.1,
+          "opinions": null,
+          "interaction_count": 19,
+          "focus_time_ms": 698
+        },
+        "perf_tbt": {
+          "score": 4.7,
+          "opinions": null,
+          "interaction_count": 42,
+          "focus_time_ms": 2669
+        },
+        "perf_fcp": {
+          "score": 3.7,
+          "opinions": null,
+          "interaction_count": 16,
+          "focus_time_ms": 1122
+        },
+        "perf_tti": {
+          "score": 4.5,
+          "opinions": null,
+          "interaction_count": 29,
+          "focus_time_ms": 2635
+        },
+        "perf_fid": {
+          "score": 4.45,
+          "opinions": null,
+          "interaction_count": 40,
+          "focus_time_ms": 1930
+        },
+        "val_satisfaction": {
+          "score": 3.7,
+          "opinions": null,
+          "interaction_count": 7,
+          "focus_time_ms": 208
+        },
+        "val_success": {
+          "score": 3.5,
+          "opinions": null,
+          "interaction_count": 6,
+          "focus_time_ms": 210
+        }
+      }
+    }
+  }
+}
