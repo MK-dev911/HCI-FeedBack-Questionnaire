@@ -1,0 +1,105 @@
+{
+  "session_metadata": {
+    "total_duration_seconds": 351.78,
+    "generated_timestamp": "2026-06-30T10:34:27.668Z",
+    "evaluated_sites_count": 1,
+    "participant": {
+      "name": "مهدیه",
+      "age": 22,
+      "job_or_field": "مهندسی کامپیوتر"
+    }
+  },
+  "website_evaluations": {
+    "filimo": {
+      "website_id": "filimo",
+      "url": "https://www.filimo.com",
+      "time_spent_seconds": 351.78,
+      "metrics": {
+        "hci_flexibility": {
+          "score": 2.15,
+          "opinions": "سایت زیادی شلوغ است و نحوه استفاده از آن زیاد راحت و واضح نیست.",
+          "interaction_count": 7,
+          "focus_time_ms": 735
+        },
+        "hci_applicability": {
+          "score": 2.45,
+          "opinions": null,
+          "interaction_count": 6,
+          "focus_time_ms": 716
+        },
+        "hci_accessibility": {
+          "score": 3.45,
+          "opinions": null,
+          "interaction_count": 8,
+          "focus_time_ms": 2474
+        },
+        "hci_reliability": {
+          "score": 2.6,
+          "opinions": "گاهی پخش کننده ی ویدیو به مشکل میخورد و هنگ میکند.",
+          "interaction_count": 2,
+          "focus_time_ms": 343
+        },
+        "hci_responsiveness": {
+          "score": 2.6,
+          "opinions": null,
+          "interaction_count": 1,
+          "focus_time_ms": 0
+        },
+        "hci_consistency": {
+          "score": 3,
+          "opinions": "ظاهرسایت زیاد استاندارد نیست.",
+          "interaction_count": 7,
+          "focus_time_ms": 926
+        },
+        "perf_cls": {
+          "score": 4.05,
+          "opinions": null,
+          "interaction_count": 18,
+          "focus_time_ms": 8689
+        },
+        "perf_inp": {
+          "score": 3.45,
+          "opinions": null,
+          "interaction_count": 8,
+          "focus_time_ms": 1406
+        },
+        "perf_tbt": {
+          "score": 3.5,
+          "opinions": null,
+          "interaction_count": 8,
+          "focus_time_ms": 423
+        },
+        "perf_fcp": {
+          "score": 2.55,
+          "opinions": null,
+          "interaction_count": 9,
+          "focus_time_ms": 1526
+        },
+        "perf_tti": {
+          "score": 3.5,
+          "opinions": null,
+          "interaction_count": 10,
+          "focus_time_ms": 917
+        },
+        "perf_fid": {
+          "score": 3.4,
+          "opinions": null,
+          "interaction_count": 10,
+          "focus_time_ms": 3218
+        },
+        "val_satisfaction": {
+          "score": 2.25,
+          "opinions": null,
+          "interaction_count": 5,
+          "focus_time_ms": 2973
+        },
+        "val_success": {
+          "score": 3,
+          "opinions": null,
+          "interaction_count": 18,
+          "focus_time_ms": 5300
+        }
+      }
+    }
+  }
+}
