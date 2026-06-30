@@ -1,8 +1,8 @@
 {
   "session_metadata": {
-    "total_duration_seconds": 606.63,
+    "total_duration_seconds": 729.91,
     "generated_timestamp": "2026-06-30T18:53:21.563Z",
-    "evaluated_sites_count": 3,
+    "evaluated_sites_count": 4,
     "participant": {
       "name": ".",
       "age": 20,
@@ -280,6 +280,97 @@
           "opinions": null,
           "interaction_count": 0,
           "focus_time_ms": 0
+        }
+      }
+    },
+    "filimo": {
+      "website_id": "filimo",
+      "url": "https://www.filimo.com",
+      "time_spent_seconds": 121.82,
+      "metrics": {
+        "hci_flexibility": {
+          "score": 4,
+          "opinions": null,
+          "interaction_count": 22,
+          "focus_time_ms": 6159
+        },
+        "hci_applicability": {
+          "score": 4.5,
+          "opinions": null,
+          "interaction_count": 18,
+          "focus_time_ms": 3931
+        },
+        "hci_accessibility": {
+          "score": 4,
+          "opinions": null,
+          "interaction_count": 25,
+          "focus_time_ms": 6200
+        },
+        "hci_reliability": {
+          "score": 4,
+          "opinions": null,
+          "interaction_count": 19,
+          "focus_time_ms": 3393
+        },
+        "hci_responsiveness": {
+          "score": 4,
+          "opinions": null,
+          "interaction_count": 24,
+          "focus_time_ms": 3641
+        },
+        "hci_consistency": {
+          "score": 4.5,
+          "opinions": null,
+          "interaction_count": 29,
+          "focus_time_ms": 5416
+        },
+        "perf_cls": {
+          "score": 4.5,
+          "opinions": null,
+          "interaction_count": 14,
+          "focus_time_ms": 2363
+        },
+        "perf_inp": {
+          "score": 4,
+          "opinions": null,
+          "interaction_count": 17,
+          "focus_time_ms": 3547
+        },
+        "perf_tbt": {
+          "score": 4,
+          "opinions": null,
+          "interaction_count": 11,
+          "focus_time_ms": 1714
+        },
+        "perf_fcp": {
+          "score": 4,
+          "opinions": null,
+          "interaction_count": 15,
+          "focus_time_ms": 3780
+        },
+        "perf_tti": {
+          "score": 4,
+          "opinions": null,
+          "interaction_count": 17,
+          "focus_time_ms": 3223
+        },
+        "perf_fid": {
+          "score": 4,
+          "opinions": null,
+          "interaction_count": 17,
+          "focus_time_ms": 3231
+        },
+        "val_satisfaction": {
+          "score": 4.5,
+          "opinions": null,
+          "interaction_count": 33,
+          "focus_time_ms": 3318
+        },
+        "val_success": {
+          "score": 4.5,
+          "opinions": null,
+          "interaction_count": 20,
+          "focus_time_ms": 3021
         }
       }
     }
