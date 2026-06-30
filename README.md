@@ -1,28 +1,24 @@
 # 📊 HCI Dataset Collector & Telemetry Engine 🌸
 
-This repository houses a high-fidelity, responsive Human-Computer Interaction (HCI) evaluation framework meticulously engineered to capture micro-behavioral user telemetry during interactive web application assessments. Built entirely on a lightweight, zero-dependency vanilla architecture, the system dynamically guides participants through targeted testing campaigns while constructing rich, multi-dimensional datasets explicitly structured for downstream machine learning engineering and behavior-predictive pipelines.
+This repository houses a high-fidelity, highly optimized Human-Computer Interaction (HCI) evaluation framework engineered to capture micro-behavioral user telemetry during interactive web application assessments. Built entirely on a lightweight, zero-dependency vanilla architecture (`HTML5`, `CSS3`, `Vanilla JavaScript`), the system dynamically guides participants through targeted testing campaigns while constructing rich, multi-dimensional datasets explicitly structured for downstream machine learning algorithms and behavioral-predictive pipelines.
 
-By blending robust performance tracking with user-centric interaction design, this engine transforms traditional qualitative feedback into high-density, quantitative features ideal for training classification, regression, and cognitive-load estimation models.
-
-> **✨ Live Environment Evaluation:** [Explore the Live Questionnaire Interface ↗](https://mk-dev911.github.io/HCI-FeedBack-Questionnaire/)
+> 🌐 **Live Production Environment:** [Experience the Evaluation Platform Live](https://mk-dev911.github.io/HCI-FeedBack-Questionnaire/)
 
 ---
 
 ## ⚡ Core Architecture & Engineering Breakdown
 
-To maintain strict structural separation and clean data-collection hygiene, the platform is divided into two highly specialized engineering domains: **Frontend Web Engineering** and **Machine Learning Telemetry Pipelines**.
+The platform is split into two highly specialized engineering domains, isolating visual presentation from data collection to maintain a clean separation of concerns.
 
 ### 🎨 Frontend Web Engineering
-* **Dynamic Bi-Directional UI Switching (LTR/RTL):** Features a fully responsive, state-driven localization engine. The UI transitions seamlessly between English (Left-to-Right) and Persian (Right-to-Left) structural layout mirroring instantly upon user toggle. This ensures zero friction for international and local cohort distributions.
-* **Aesthetic Responsive Design 🎀:** Built with a cohesive, carefully tailored visual system. Utilizing modern CSS custom properties (`:root` variables), the interface renders an elegant, minimal palette featuring soft pink, clean lavender, and midnight-dark theme accents. This specialized styling is deliberately optimized for high readability, visual clarity, and the mitigation of participant evaluation fatigue during extended testing sessions.
-* **Efficient Pure-DOM State Management:** To keep the platform fast and lightweight, all state mutations are handled via pure vanilla DOM execution. The pipeline ensures complete, leak-free clean resets of forms, slider fill states, and progress indicators when moving between different target systems without requiring expensive browser reloads or third-party framework overhead.
+* **Dynamic Bi-Directional UI Switching (LTR/RTL):** Features a robust localization pipeline. When a user toggles between English and Persian, the system instantly mirrors the layout engine (Left-to-Right $\leftrightarrow$ Right-to-Left), injects localized typography fonts (`Poppins` vs. `Vazirmatn`), and re-renders contextual cues seamlessly without disrupting application state.
+* **Aesthetic & Accessible Design System:** A cohesive, custom-tailored design suite featuring a balanced, minimal layout with clean aesthetic accents (including option suites for customized themes, subtle curves, and a premium dark-theme mode). The system relies entirely on semantic CSS variables to deliver high-contrast readability, reducing evaluation fatigue and maximizing user engagement.
+* **Zero-Dependency State Management:** Eliminates bloated modern framework overhead by utilizing native DOM runtime operations. The interface ensures instant, clean-resets of forms, continuous custom slider fill-gradients, progress tracking metrics, and state synchronization across evaluation iterations without requiring a single page reload.
 
 ### 📊 Machine Learning Data & Tracking Pipeline
-* **Granular Focus Duration Tracking ($T_{focus}$):** Utilizes high-precision event hooks (`mousedown`, `touchstart`, `input`) to calculate the exact cumulative active interaction span (measured in milliseconds) per question block. By filtering out idle or resting states, it isolates true active processing time as a proxy feature for cognitive complexity.
-* **Continuous Scale Telemetry ($1.00 \rightarrow 5.00$):** Operates on non-snapping micro-sliders initializing on a neutral, "unrated" baseline state. This structural design choice completely eliminates participant anchoring bias. Once touched, it captures ultra-precise floating-point data points ($1.00$ to $5.00$), offering a continuous spectrum of sentiment data far richer than discrete Likert integer steps.
-* **Micro-Interaction Counters:** Real-time modification and calibration frequencies are actively tallied per individual heuristic. Tracking how often a user shifts a slider back and forth yields crucial model features that represent user hesitation, certainty, or cognitive load during evaluation.
-* **Qualitative Feature Synthesis:** Each continuous metric is paired with an optional, contextual text-input layer. This pairs quantitative interaction metadata with raw natural language strings, enabling advanced multi-modal downstream analysis (e.g., combining numeric sentiment vectors with text-based NLP embeddings).
-
+* **Granular Focus Duration Telemetry:** Implements high-precision event listeners (`mousedown`, `touchstart`, `input`) to compute the exact cumulative focal interaction duration (measured in milliseconds) for each standalone question block. This isolates active interaction windows from idle browser states.
+* **Continuous Rating Scales & Bias Elimination:** Replaces standard discrete integer radio buttons with non-snapping continuous micro-sliders. Sliders start on an unrated baseline state to eliminate participant anchoring bias, allowing users to input precise floating-point values ($1.00$ to $5.00$) to provide high-variance continuous features for model training.
+* **Micro-Interaction Hesitation Counters:** Captures real-time adjustment frequencies and input modification counts per heuristic. This data provides the machine learning pipeline with unique mathematical proxies for user hesitation, cognitive load, and visual ambiguity.
 ---
 
 ## 🏛️ Core HCI & Performance Principles Mapping
