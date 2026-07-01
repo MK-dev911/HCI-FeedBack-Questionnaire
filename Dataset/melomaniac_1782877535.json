@@ -1,0 +1,105 @@
+{
+  "session_metadata": {
+    "total_duration_seconds": 108.58,
+    "generated_timestamp": "2026-07-01T03:44:58.153Z",
+    "evaluated_sites_count": 1,
+    "participant": {
+      "name": "Melomaniac",
+      "age": 21,
+      "job_or_field": "Software developer"
+    }
+  },
+  "website_evaluations": {
+    "digikala": {
+      "website_id": "digikala",
+      "url": "https://www.digikala.com",
+      "time_spent_seconds": 108.57,
+      "metrics": {
+        "hci_flexibility": {
+          "score": 3.8,
+          "opinions": null,
+          "interaction_count": 58,
+          "focus_time_ms": 3861
+        },
+        "hci_applicability": {
+          "score": 4.2,
+          "opinions": null,
+          "interaction_count": 17,
+          "focus_time_ms": 1207
+        },
+        "hci_accessibility": {
+          "score": 3.1,
+          "opinions": null,
+          "interaction_count": 1,
+          "focus_time_ms": 1
+        },
+        "hci_reliability": {
+          "score": 4.45,
+          "opinions": null,
+          "interaction_count": 22,
+          "focus_time_ms": 1368
+        },
+        "hci_responsiveness": {
+          "score": 4.1,
+          "opinions": null,
+          "interaction_count": 15,
+          "focus_time_ms": 1724
+        },
+        "hci_consistency": {
+          "score": 4.25,
+          "opinions": null,
+          "interaction_count": 14,
+          "focus_time_ms": 824
+        },
+        "perf_cls": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 9,
+          "focus_time_ms": 158
+        },
+        "perf_inp": {
+          "score": 4.6,
+          "opinions": null,
+          "interaction_count": 20,
+          "focus_time_ms": 742
+        },
+        "perf_tbt": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 17,
+          "focus_time_ms": 909
+        },
+        "perf_fcp": {
+          "score": 4.55,
+          "opinions": null,
+          "interaction_count": 14,
+          "focus_time_ms": 1016
+        },
+        "perf_tti": {
+          "score": 4.55,
+          "opinions": null,
+          "interaction_count": 14,
+          "focus_time_ms": 674
+        },
+        "perf_fid": {
+          "score": 4.25,
+          "opinions": null,
+          "interaction_count": 23,
+          "focus_time_ms": 1107
+        },
+        "val_satisfaction": {
+          "score": 4.35,
+          "opinions": null,
+          "interaction_count": 19,
+          "focus_time_ms": 692
+        },
+        "val_success": {
+          "score": 4.4,
+          "opinions": null,
+          "interaction_count": 20,
+          "focus_time_ms": 792
+        }
+      }
+    }
+  }
+}
