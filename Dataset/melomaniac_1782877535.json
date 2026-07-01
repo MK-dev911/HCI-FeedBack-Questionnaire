@@ -1,8 +1,8 @@
 {
   "session_metadata": {
-    "total_duration_seconds": 268.74,
+    "total_duration_seconds": 306.95,
     "generated_timestamp": "2026-07-01T03:44:58.153Z",
-    "evaluated_sites_count": 5,
+    "evaluated_sites_count": 6,
     "participant": {
       "name": "Melomaniac",
       "age": 21,
@@ -462,6 +462,97 @@
           "opinions": null,
           "interaction_count": 1,
           "focus_time_ms": 1
+        }
+      }
+    },
+    "divar": {
+      "website_id": "divar",
+      "url": "https://divar.ir",
+      "time_spent_seconds": 36.26,
+      "metrics": {
+        "hci_flexibility": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 6,
+          "focus_time_ms": 142
+        },
+        "hci_applicability": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 8,
+          "focus_time_ms": 217
+        },
+        "hci_accessibility": {
+          "score": 4.15,
+          "opinions": null,
+          "interaction_count": 7,
+          "focus_time_ms": 130
+        },
+        "hci_reliability": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 11,
+          "focus_time_ms": 227
+        },
+        "hci_responsiveness": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 6,
+          "focus_time_ms": 100
+        },
+        "hci_consistency": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 7,
+          "focus_time_ms": 144
+        },
+        "perf_cls": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 4,
+          "focus_time_ms": 94
+        },
+        "perf_inp": {
+          "score": 4.55,
+          "opinions": null,
+          "interaction_count": 4,
+          "focus_time_ms": 65
+        },
+        "perf_tbt": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 5,
+          "focus_time_ms": 94
+        },
+        "perf_fcp": {
+          "score": 4.6,
+          "opinions": null,
+          "interaction_count": 6,
+          "focus_time_ms": 94
+        },
+        "perf_tti": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 13,
+          "focus_time_ms": 253
+        },
+        "perf_fid": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 11,
+          "focus_time_ms": 246
+        },
+        "val_satisfaction": {
+          "score": 4.7,
+          "opinions": null,
+          "interaction_count": 10,
+          "focus_time_ms": 245
+        },
+        "val_success": {
+          "score": 4.45,
+          "opinions": null,
+          "interaction_count": 10,
+          "focus_time_ms": 208
         }
       }
     }
