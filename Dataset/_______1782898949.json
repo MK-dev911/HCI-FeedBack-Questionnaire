@@ -1,0 +1,105 @@
+{
+  "session_metadata": {
+    "total_duration_seconds": 151.32,
+    "generated_timestamp": "2026-07-01T09:41:57.116Z",
+    "evaluated_sites_count": 1,
+    "participant": {
+      "name": "مهدیار",
+      "age": 14,
+      "job_or_field": null
+    }
+  },
+  "website_evaluations": {
+    "aparat": {
+      "website_id": "aparat",
+      "url": "https://www.youtube.com",
+      "time_spent_seconds": 151.32,
+      "metrics": {
+        "hci_flexibility": {
+          "score": 4.7,
+          "opinions": null,
+          "interaction_count": 3,
+          "focus_time_ms": 1030
+        },
+        "hci_applicability": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 3,
+          "focus_time_ms": 470
+        },
+        "hci_accessibility": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 5,
+          "focus_time_ms": 347
+        },
+        "hci_reliability": {
+          "score": 4.65,
+          "opinions": null,
+          "interaction_count": 1,
+          "focus_time_ms": 1
+        },
+        "hci_responsiveness": {
+          "score": 3.95,
+          "opinions": null,
+          "interaction_count": 1,
+          "focus_time_ms": 1
+        },
+        "hci_consistency": {
+          "score": 2.7,
+          "opinions": null,
+          "interaction_count": 1,
+          "focus_time_ms": 0
+        },
+        "perf_cls": {
+          "score": 4.35,
+          "opinions": null,
+          "interaction_count": 1,
+          "focus_time_ms": 1
+        },
+        "perf_inp": {
+          "score": 3.8,
+          "opinions": null,
+          "interaction_count": 1,
+          "focus_time_ms": 0
+        },
+        "perf_tbt": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 2,
+          "focus_time_ms": 2
+        },
+        "perf_fcp": {
+          "score": 3.55,
+          "opinions": "for iranian people it's not very fast because of network",
+          "interaction_count": 1,
+          "focus_time_ms": 0
+        },
+        "perf_tti": {
+          "score": 4.2,
+          "opinions": null,
+          "interaction_count": 2,
+          "focus_time_ms": 0
+        },
+        "perf_fid": {
+          "score": 4.15,
+          "opinions": null,
+          "interaction_count": 1,
+          "focus_time_ms": 0
+        },
+        "val_satisfaction": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 2,
+          "focus_time_ms": 194
+        },
+        "val_success": {
+          "score": 4.5,
+          "opinions": null,
+          "interaction_count": 1,
+          "focus_time_ms": 0
+        }
+      }
+    }
+  }
+}
