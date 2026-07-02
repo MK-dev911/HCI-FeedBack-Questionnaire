@@ -1,0 +1,105 @@
+{
+  "session_metadata": {
+    "total_duration_seconds": 134.41,
+    "generated_timestamp": "2026-07-02T06:03:27.591Z",
+    "evaluated_sites_count": 1,
+    "participant": {
+      "name": "لوتوس",
+      "age": 20,
+      "job_or_field": "دانشجوی مهندسی کامپیوتر"
+    }
+  },
+  "website_evaluations": {
+    "snapp": {
+      "website_id": "snapp",
+      "url": "https://www.snapp.ir",
+      "time_spent_seconds": 134.41,
+      "metrics": {
+        "hci_flexibility": {
+          "score": 4.1,
+          "opinions": null,
+          "interaction_count": 20,
+          "focus_time_ms": 1919
+        },
+        "hci_applicability": {
+          "score": 3.95,
+          "opinions": null,
+          "interaction_count": 25,
+          "focus_time_ms": 1350
+        },
+        "hci_accessibility": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 5,
+          "focus_time_ms": 407
+        },
+        "hci_reliability": {
+          "score": 3.75,
+          "opinions": null,
+          "interaction_count": 5,
+          "focus_time_ms": 500
+        },
+        "hci_responsiveness": {
+          "score": 5,
+          "opinions": null,
+          "interaction_count": 7,
+          "focus_time_ms": 267
+        },
+        "hci_consistency": {
+          "score": 3.95,
+          "opinions": null,
+          "interaction_count": 11,
+          "focus_time_ms": 553
+        },
+        "perf_cls": {
+          "score": 3.85,
+          "opinions": null,
+          "interaction_count": 20,
+          "focus_time_ms": 1262
+        },
+        "perf_inp": {
+          "score": 3.95,
+          "opinions": null,
+          "interaction_count": 8,
+          "focus_time_ms": 1215
+        },
+        "perf_tbt": {
+          "score": 4.05,
+          "opinions": null,
+          "interaction_count": 9,
+          "focus_time_ms": 420
+        },
+        "perf_fcp": {
+          "score": 3.85,
+          "opinions": null,
+          "interaction_count": 10,
+          "focus_time_ms": 521
+        },
+        "perf_tti": {
+          "score": 3.65,
+          "opinions": null,
+          "interaction_count": 5,
+          "focus_time_ms": 668
+        },
+        "perf_fid": {
+          "score": 3.8,
+          "opinions": null,
+          "interaction_count": 3,
+          "focus_time_ms": 388
+        },
+        "val_satisfaction": {
+          "score": 3.7,
+          "opinions": null,
+          "interaction_count": 7,
+          "focus_time_ms": 1240
+        },
+        "val_success": {
+          "score": 3.85,
+          "opinions": null,
+          "interaction_count": 8,
+          "focus_time_ms": 375
+        }
+      }
+    }
+  }
+}
